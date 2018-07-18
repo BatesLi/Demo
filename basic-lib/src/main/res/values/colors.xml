@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorDivider">#E9E9E9</color>
+    <color name="colorContent">@android:color/white</color>
+    <color name="colorSub">#4A90E2</color>
+
+
+    <color name="colorTextFirst">#141414</color>
+    <color name="colorTextSecond">#666666</color>
+    <color name="colorTextThird">#999999</color>
+
+    <color name="colorUnClick">#CFCFCF</color>
+</resources>
