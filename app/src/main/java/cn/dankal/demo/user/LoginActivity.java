@@ -1,19 +1,18 @@
 package cn.dankal.demo.user;
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
 import cn.dankal.demo.R;
-import cn.dankal.manager.UserManager;
+import cn.dankal.demo.TestActivity;
+import cn.dankal.demo.test.SingleTon;
 
 /**
  * @author leaflc
@@ -97,6 +96,8 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
             case R.id.bt_login:
                 if (tempCode==null){
                     showToast("请先获取验证码");
+                    Intent intent = new Intent(this,TestActivity.class);
+                    startActivity(intent);
                     return;
                 }
                 presenter.login(etMobile.getText().toString(), etVerifyCode.getText().toString(), tempCode);
