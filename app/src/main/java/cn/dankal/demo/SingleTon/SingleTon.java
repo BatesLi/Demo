@@ -1,4 +1,4 @@
-package cn.dankal.demo.test;
+package cn.dankal.demo.SingleTon;
 
 import android.content.Context;
 

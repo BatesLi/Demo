@@ -11,14 +11,12 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
 import cn.dankal.demo.R;
-import cn.dankal.demo.TestActivity;
-import cn.dankal.demo.test.SingleTon;
+import cn.dankal.demo.mvp.activity.LeafActivity;
 
 /**
  * @author leaflc
  */
 public class LoginActivity extends BaseActivity implements LoginContact.LoginView {
-
 
     @BindView(R.id.et_mobile)
     EditText etMobile;
@@ -96,7 +94,7 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
             case R.id.bt_login:
                 if (tempCode==null){
                     showToast("请先获取验证码");
-                    Intent intent = new Intent(this,TestActivity.class);
+                  Intent intent = new Intent(this, LeafActivity.class);
                     startActivity(intent);
                     return;
                 }

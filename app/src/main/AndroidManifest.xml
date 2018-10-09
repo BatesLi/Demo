@@ -4,6 +4,11 @@
 
   <uses-permission android:name="android.permission.INTERNET"/>
 
+  <!-- To auto-complete the email text field in the login form with the user's emails -->
+  <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+  <uses-permission android:name="android.permission.READ_PROFILE"/>
+  <uses-permission android:name="android.permission.READ_CONTACTS"/>
+
   <application
       android:name="cn.dankal.basic_lib.DankalApplication"
       android:allowBackup="true"
@@ -12,14 +17,21 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".user.LoginActivity">
+    <activity android:name=".mvp.activity.LeafActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
-
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
-    <activity android:name=".TestActivity">
+    <activity android:name=".HandlerActivity">
+    </activity>
+    <activity android:name=".BubbleSortActivity">
+    </activity>
+    <activity android:name=".mvp.activity.StartActivity">
+    </activity>
+    <!-- <activity android:name=".mvp.activity.LeafActivity">
+     </activity>-->
+    <activity android:name=".interfaceTest.InterfaceTestActivity">
     </activity>
   </application>
 

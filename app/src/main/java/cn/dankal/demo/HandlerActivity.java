@@ -1,6 +1,5 @@
 package cn.dankal.demo;
 
-import android.icu.util.Measure;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -11,7 +10,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class TestActivity extends AppCompatActivity {
+public class HandlerActivity extends AppCompatActivity {
 
   @BindView(R.id.btn_one) Button mBtnOne;
   @BindView(R.id.txt_show) TextView mTxtShow;
@@ -36,12 +35,14 @@ public class TestActivity extends AppCompatActivity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);
-      setContentView(R.layout.activity_test);
+    setContentView(R.layout.activity_handler);
       ButterKnife.bind(this);
 
 
       mBtnOne.setOnClickListener(new View.OnClickListener() {
         @Override public void onClick(View v) {
+          //这种直接新建的子线程Thread和AsyncTask都是匿名内部类对象，
+          // 默认就隐式的持有外部Activity的引用，导致Activity内存泄露
           new Thread() {
             @Override
             public void run() {
@@ -53,6 +54,7 @@ public class TestActivity extends AppCompatActivity {
                   }
                   handler.sendEmptyMessage(0);
               }
+              handler.sendEmptyMessage(1);
             }
           }.start();
         }
