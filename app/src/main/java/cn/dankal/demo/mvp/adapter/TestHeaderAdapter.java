@@ -157,13 +157,19 @@ public class TestHeaderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
       }
 
       @Override public void onPageScrollStateChanged(int state) {
-        //header广告轮播定时器
-        Timer timer = new Timer();
+        //header广告轮播定时器,5s自动轮播
+        /*Timer timer = new Timer();
         timer.schedule(new TimerTask() {
           @Override public void run() {
-
+            Message message = new Message();
+            message.what = UPTATE_VIEWPAGER;
+            if (currentIndex == mCircleImages.length - 1) {
+                currentIndex = -1;
+            }
+            message.arg1 = currentIndex + 1;//储存数据
+            handler.sendMessage(message);
           }
-        }, 6000, 6000);
+        }, 6000, 6000);*/
       }
     });
   }
