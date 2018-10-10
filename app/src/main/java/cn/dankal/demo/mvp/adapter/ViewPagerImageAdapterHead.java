@@ -23,7 +23,7 @@ public class ViewPagerImageAdapterHead extends PagerAdapter {
 
   @Override public int getCount() {
     //同样是使用ViewPager,但是getCount返回值不用为Integer.MAX_VALUE，只需返回图片数量+2
-    return mHeadImageList.size() + 2;
+    return Integer.MAX_VALUE;
   }
 
   @Override public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {

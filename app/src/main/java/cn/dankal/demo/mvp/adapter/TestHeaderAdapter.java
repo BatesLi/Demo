@@ -31,7 +31,10 @@ public class TestHeaderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
   private static final int ITEM_TYPE_CONTENT = 1;
   private static final int ITEM_TYPE_BOTTOM = 2;
 
-  //Handler 用到的参数值
+  //viewpager的自动轮播时间
+  private static final int AD_TIME = 8000;
+  public Runnable mRunnableHanlder;
+  private int itemPosition;
   private static final int UPTATE_VIEWPAGER = 0;
 
   public Context mContext;
@@ -106,30 +109,35 @@ public class TestHeaderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
     mViewPagerImageAdapterHead = new ViewPagerImageAdapterHead(mContext, imageVpData);
     viewPager.setAdapter(mViewPagerImageAdapterHead);
 
-    final Handler handler = new Handler() {
+    /*final Handler mHandler = new Handler() {
       public void handleMessage(Message message) {
         switch (message.what) {
           case UPTATE_VIEWPAGER:
             if (message.arg1 != 0) {
-              //setCurrentItem(int index)方法主要用来制定初始化的页面。
-              // 例如加入3个页面通过setCurrentItem(0)制定第一个页面为当前页面
               viewPager.setCurrentItem(message.arg1);
-            } else {
-              //false 当从末页调到首页是，不显示翻页动画效果
-              viewPager.setCurrentItem(message.arg1, false);
-            }
+            }else {
+              viewPager.setCurrentItem(message.arg1,false);
+            }K
             break;
+            default:
+              break;
         }
       }
-    };
-
-    //创建底部指示位置的导航栏
-
+    };*/
+    //创建初始化底部指示位置的导航栏
     //创建一个ImageView类型的数组,仅仅只有数量，数组里面并没有具体的元素
     mCircleImages = new ImageView[mHeaderAdData.size()];
     for (int i = 0; i < mCircleImages.length; i++) {
       ImageView imageView = new ImageView(mContext);
-      imageView.setBackgroundResource(R.drawable.indicator_select);
+      LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(10, 10);
+      params.setMargins(5, 0, 5, 0);
+      imageView.setLayoutParams(params);
+      if (i == 0) {
+        imageView.setBackgroundResource(R.drawable.indicator_select);
+      } else {
+        imageView.setBackgroundResource(R.drawable.indicator_not_select);
+      }
+
       mCircleImages[i] = imageView;
       if (mCircleImages[i] != null) {
         llBottom.addView(mCircleImages[i]);
@@ -144,6 +152,7 @@ public class TestHeaderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
 
       }
 
+      //此方法是页面跳转完后得到调用
       @Override public void onPageSelected(int position) {
         int total = mCircleImages.length;
         for (int i = 0; i < total; i++) {
@@ -156,24 +165,25 @@ public class TestHeaderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
         currentIndex = position;
       }
 
+      //此方法是在状态改变的时候调用，其中state这个参数有三种状态
       @Override public void onPageScrollStateChanged(int state) {
-        //header广告轮播定时器,5s自动轮播
-        /*Timer timer = new Timer();
-        timer.schedule(new TimerTask() {
-          @Override public void run() {
-            Message message = new Message();
-            message.what = UPTATE_VIEWPAGER;
-            if (currentIndex == mCircleImages.length - 1) {
-                currentIndex = -1;
-            }
-            message.arg1 = currentIndex + 1;//储存数据
-            handler.sendMessage(message);
+
+     /* Timer timer = new Timer();
+      timer.schedule(new TimerTask() {
+        @Override public void run() {
+          Message message = new Message();
+          message.what = UPTATE_VIEWPAGER;
+          if (currentIndex == mHeaderAdData.size() - 1) {
+              currentIndex = -1;
           }
-        }, 6000, 6000);*/
+          message.arg1 = currentIndex + 1;
+          mHandler.sendMessage(message);
+        }
+      }, 8000, 8000);
+      }*/
       }
     });
   }
-
   @Override public int getItemCount() {
     return mHeaderView + mData.size() + mBottomView;
   }
