@@ -25,7 +25,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TestHeaderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class ViewAdapterHeaderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
   private static final int ITEM_TYPE_HEADER = 0;
   private static final int ITEM_TYPE_CONTENT = 1;
@@ -52,7 +52,7 @@ public class TestHeaderAdapter extends RecyclerView.Adapter<RecyclerView.ViewHol
   private int currentIndex = 0;
   private ImageView[] mCircleImages;//底部只是当前页面的小圆点
 
-  public TestHeaderAdapter(Context context, List<Integer> data) {
+  public ViewAdapterHeaderAdapter(Context context, List<Integer> data) {
     this.mContext = context;
     this.mData = data;
     mLayoutInflater = LayoutInflater.from(context);

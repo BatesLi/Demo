@@ -11,14 +11,14 @@ import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.dankal.demo.R;
-import cn.dankal.demo.mvp.adapter.TestHeaderAdapter;
+import cn.dankal.demo.mvp.adapter.ViewAdapterHeaderAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class InquisitiveFragment extends Fragment {
 
   public List<Integer> mData;
-  public TestHeaderAdapter mTestHeaderAdapter;
+  public ViewAdapterHeaderAdapter mViewAdapterHeaderAdapter;
   public LinearLayoutManager mLinearLayoutManager;
   @BindView(R.id.Recycler_fragment_inquisitive) RecyclerView mRecyclerFragmentInquisitive;
 
@@ -40,11 +40,11 @@ public class InquisitiveFragment extends Fragment {
   }
 
   private void initView() {
-    mTestHeaderAdapter = new TestHeaderAdapter(getContext(), mData);
+    mViewAdapterHeaderAdapter = new ViewAdapterHeaderAdapter(getContext(), mData);
     mLinearLayoutManager = new LinearLayoutManager(getContext());
     mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
     mRecyclerFragmentInquisitive.setLayoutManager(mLinearLayoutManager);
-    mRecyclerFragmentInquisitive.setAdapter(mTestHeaderAdapter);
+    mRecyclerFragmentInquisitive.setAdapter(mViewAdapterHeaderAdapter);
   }
 }
 
