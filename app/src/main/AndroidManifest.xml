@@ -27,9 +27,9 @@
     </activity>
     <activity android:name=".BubbleSortActivity">
     </activity>
-    <activity android:name=".mvp.activity.StartActivity">
+    <activity android:name=".ViewPagerHeaderMvp.activity.StartActivity">
     </activity>
-    <activity android:name=".mvp.activity.LeafActivity">
+    <activity android:name=".ViewPagerHeaderMvp.activity.LeafActivity">
     </activity>
     <activity android:name=".interfaceTest.InterfaceTestActivity">
     </activity>
