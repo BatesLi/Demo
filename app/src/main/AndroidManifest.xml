@@ -33,6 +33,8 @@
     </activity>
     <activity android:name=".interfaceTest.InterfaceTestActivity">
     </activity>
+    <activity android:name=".DouBanMvp.DouBanActivity">
+    </activity>
   </application>
 
 </manifest>

@@ -142,5 +142,11 @@
 
   <Button android:id="@+id/btn_view_pager"
       android:layout_width="wrap_content" android:layout_height="wrap_content"
-      android:layout_marginLeft="20dp" android:text="viewpager轮播广告"/>
+      android:layout_marginLeft="20dp" android:text="viewpager轮播广告"
+      android:textSize="18sp"/>
+
+    <Button android:id="@+id/btn_douban"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:text="豆瓣入口" android:layout_marginLeft="20dp"
+        android:textSize="18sp"/>
 </LinearLayout>

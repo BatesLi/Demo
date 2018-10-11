@@ -10,6 +10,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
+import cn.dankal.demo.DouBanMvp.DouBanActivity;
 import cn.dankal.demo.R;
 import cn.dankal.demo.ViewPagerHeaderMvp.activity.LeafActivity;
 
@@ -29,10 +30,16 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     @BindView(R.id.bt_login)
     Button btLogin;
 
-    @BindView(R.id.btn_view_pager) Button mBtnViewPager;//临时
+    @BindView(R.id.btn_view_pager) Button mBtnViewPager;//recyclerView用作头部广告 临时
+    @BindView(R.id.btn_douban) Button mBtnDouBan;//豆瓣临时入口
 
     @OnClick(R.id.btn_view_pager) void onClickViewpager(View view) {
         Intent intent = new Intent(view.getContext(), LeafActivity.class);
+        startActivity(intent);
+    }
+
+    @OnClick(R.id.btn_douban) void onClickDouBan(View view) {
+        Intent intent = new Intent(view.getContext(), DouBanActivity.class);
         startActivity(intent);
     }
     private LoginPresenter presenter = new LoginPresenter();
