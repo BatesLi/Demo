@@ -4,7 +4,9 @@
     <color name="colorPrimaryDark">@android:color/white</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorGray">#9C9C9C</color>
-
+  <!--leaf-->
+  <color name="colorLoginButton">#FFFFFF</color>
+  <color name="colorCursor">#CD3333</color>
     <!--Text-->
     <color name="textColor">#424242</color>
 

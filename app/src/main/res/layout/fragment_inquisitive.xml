@@ -10,7 +10,6 @@
 
   <android.support.v7.widget.RecyclerView android:id="@+id/Recycler_fragment_inquisitive"
       android:layout_width="match_parent" android:layout_height="wrap_content"
-      android:background="@color/gery"/>
-
+      android:background="@color/card_3"/>
 
 </LinearLayout>

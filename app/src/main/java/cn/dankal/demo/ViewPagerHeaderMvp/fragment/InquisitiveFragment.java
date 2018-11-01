@@ -10,16 +10,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.dankal.basic_lib.util.ToastUtil;
 import cn.dankal.demo.R;
+import cn.dankal.demo.ViewPagerHeaderMvp.ViewPagerHeaderService.InquisitiveContact;
+import cn.dankal.demo.ViewPagerHeaderMvp.ViewPagerHeaderService.InquisitivePresenter;
 import cn.dankal.demo.ViewPagerHeaderMvp.adapter.ViewAdapterHeaderAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InquisitiveFragment extends Fragment {
+public class InquisitiveFragment extends Fragment implements InquisitiveContact.InquisitiveIView {
 
-  public List<Integer> mData;
-  public ViewAdapterHeaderAdapter mViewAdapterHeaderAdapter;
   public LinearLayoutManager mLinearLayoutManager;
+  public InquisitivePresenter mInquisitivePresenter;
+
   @BindView(R.id.Recycler_fragment_inquisitive) RecyclerView mRecyclerFragmentInquisitive;
 
   @Override
@@ -27,24 +30,34 @@ public class InquisitiveFragment extends Fragment {
       , Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_inquisitive, container, false);
     ButterKnife.bind(this, view);
-    initData();
-    initView();
+
+    mInquisitivePresenter = new InquisitivePresenter(getContext());
+    mInquisitivePresenter.getData();
+    mInquisitivePresenter.attachView(this);
     return view;
   }
 
-  private void initData() {
-    mData = new ArrayList<>();
-    for (int i = 0; i < 20; i++) {
-      mData.add(i);
-    }
+  @Override public RecyclerView getRecyclerView() {
+    return mRecyclerFragmentInquisitive;
   }
 
-  private void initView() {
-    mViewAdapterHeaderAdapter = new ViewAdapterHeaderAdapter(getContext(), mData);
+  @Override public LinearLayoutManager getLinearManager() {
     mLinearLayoutManager = new LinearLayoutManager(getContext());
     mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
     mRecyclerFragmentInquisitive.setLayoutManager(mLinearLayoutManager);
-    mRecyclerFragmentInquisitive.setAdapter(mViewAdapterHeaderAdapter);
+    return mLinearLayoutManager;
+  }
+
+  @Override public void isRefresh(boolean fresh) {
+
+  }
+
+  @Override public void loadError() {
+
+  }
+
+  @Override public void success() {
+    ToastUtil.toToast("显示数据");
   }
 }
 
