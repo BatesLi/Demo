@@ -53,9 +53,9 @@ public class InquisitiveFragment extends Fragment implements InquisitiveContact.
   }
 
   @Override public LinearLayoutManager getLinearManager() {
-    mLinearLayoutManager = new LinearLayoutManager(getContext());
+    /*mLinearLayoutManager = new LinearLayoutManager(getContext());
     mLinearLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-    mRecyclerFragmentInquisitive.setLayoutManager(mLinearLayoutManager);
+    mRecyclerFragmentInquisitive.setLayoutManager(mLinearLayoutManager);*/
     return mLinearLayoutManager;
   }
 
