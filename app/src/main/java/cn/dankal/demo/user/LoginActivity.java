@@ -10,6 +10,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
+import cn.dankal.demo.FAQ.FaqActivity;
 import cn.dankal.demo.R;
 
 /**
@@ -27,6 +28,13 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     Button btVerifyCode;
     @BindView(R.id.bt_login)
     Button btLogin;
+
+    @BindView(R.id.btn_FAQ) Button mBtnFAQ;
+
+    @OnClick(R.id.btn_FAQ) public void onClickFAQ(View view) {
+        Intent intent = new Intent(view.getContext(), FaqActivity.class);
+        startActivity(intent);
+    }
 
     private LoginPresenter presenter = new LoginPresenter();
     private TimeCount timeCount;

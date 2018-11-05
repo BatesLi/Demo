@@ -140,7 +140,9 @@
         android:textColor="@android:color/white"
         android:textSize="16sp" />
 
-  <Button android:id="@+id/btn_view_pager"
+  <Button android:id="@+id/btn_FAQ"
       android:layout_width="wrap_content" android:layout_height="wrap_content"
-      android:layout_marginLeft="20dp" android:text="viewpager轮播广告"/>
+      android:text="FAQ" android:layout_gravity="center"
+      android:layout_marginTop="10dp"/>
+
 </LinearLayout>
