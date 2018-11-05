@@ -23,16 +23,6 @@
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
-    <activity android:name=".HandlerActivity">
-    </activity>
-    <activity android:name=".BubbleSortActivity">
-    </activity>
-    <activity android:name=".ViewPagerHeaderMvp.activity.StartActivity">
-    </activity>
-    <activity android:name=".ViewPagerHeaderMvp.activity.LeafActivity">
-    </activity>
-    <activity android:name=".interfaceTest.InterfaceTestActivity">
-    </activity>
   </application>
 
 </manifest>
