@@ -1,6 +1,5 @@
 package cn.dankal.demo.user;
 
-import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -11,7 +10,6 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
 import cn.dankal.demo.R;
-import cn.dankal.demo.ViewPagerHeaderMvp.activity.LeafActivity;
 
 /**
  * @author leaflc
@@ -29,12 +27,6 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     @BindView(R.id.bt_login)
     Button btLogin;
 
-    @BindView(R.id.btn_view_pager) Button mBtnViewPager;//临时
-
-    @OnClick(R.id.btn_view_pager) void onClickViewpager(View view) {
-        Intent intent = new Intent(view.getContext(), LeafActivity.class);
-        startActivity(intent);
-    }
     private LoginPresenter presenter = new LoginPresenter();
     private TimeCount timeCount;
     private String tempCode;
@@ -100,8 +92,6 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
             case R.id.bt_login:
                 if (tempCode==null){
                     showToast("请先获取验证码");
-                  Intent intent = new Intent(this, LeafActivity.class);
-                    startActivity(intent);
                     return;
                 }
                 presenter.login(etMobile.getText().toString(), etVerifyCode.getText().toString(), tempCode);
