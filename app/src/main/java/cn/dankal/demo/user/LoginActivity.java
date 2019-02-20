@@ -1,5 +1,6 @@
 package cn.dankal.demo.user;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -9,6 +10,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
+import cn.dankal.demo.KotlinOne.KotlinOneActivity;
 import cn.dankal.demo.R;
 
 /**
@@ -26,6 +28,7 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     Button btVerifyCode;
     @BindView(R.id.bt_login)
     Button btLogin;
+  @BindView(R.id.btn_kotlin_one) Button mBtnKotlinOne; //kotlin第一次练习入口
 
     private LoginPresenter presenter = new LoginPresenter();
     private TimeCount timeCount;
@@ -83,7 +86,7 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
         timeCount.cancel();
     }
 
-    @OnClick({R.id.bt_verify_code, R.id.bt_login})
+  @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_kotlin_one})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_verify_code:
@@ -94,6 +97,10 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
                     showToast("请先获取验证码");
                     return;
                 }
+          case R.id.btn_kotlin_one:
+            Intent kotlinOneIntent = new Intent(this, KotlinOneActivity.class);
+            startActivity(kotlinOneIntent);
+
                 presenter.login(etMobile.getText().toString(), etVerifyCode.getText().toString(), tempCode);
                 break;
             default:
