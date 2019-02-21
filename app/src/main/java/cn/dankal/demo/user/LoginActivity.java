@@ -83,7 +83,7 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
         timeCount.cancel();
     }
 
-  @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_multi})
+  @OnClick({R.id.bt_verify_code, R.id.bt_login})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_verify_code:
