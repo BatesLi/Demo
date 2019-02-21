@@ -138,8 +138,4 @@
         android:text="@string/login"
         android:textColor="@android:color/white"
         android:textSize="16sp" />
-
-  <Button android:id="@+id/btn_multi"
-      android:layout_width="wrap_content" android:layout_height="wrap_content"
-      android:layout_marginLeft="20dp" android:text="multi"/>
 </LinearLayout>

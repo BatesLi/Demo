@@ -26,7 +26,6 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     Button btVerifyCode;
     @BindView(R.id.bt_login)
     Button btLogin;
-  @BindView(R.id.btn_multi) Button mBtnMulti;
 
     private LoginPresenter presenter = new LoginPresenter();
     private TimeCount timeCount;
