@@ -27,6 +27,8 @@
     </activity>
     <activity android:name=".BubbleSortActivity">
     </activity>
+    <activity android:name=".smallPhotoAlbum.SmallAlbumActivity">
+    </activity>
   </application>
 
 </manifest>

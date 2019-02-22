@@ -1,5 +1,6 @@
 package cn.dankal.demo.user;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -10,6 +11,7 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
 import cn.dankal.demo.R;
+import cn.dankal.demo.smallPhotoAlbum.SmallAlbumActivity;
 
 /**
  * @author leaflc
@@ -26,13 +28,13 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     Button btVerifyCode;
     @BindView(R.id.bt_login)
     Button btLogin;
-  @BindView(R.id.btn_multi) Button mBtnMulti;
+  @BindView(R.id.btn_small_album) Button mBtnSmallAlbum;//临时小相册入口
 
     private LoginPresenter presenter = new LoginPresenter();
     private TimeCount timeCount;
     private String tempCode;
 
-    @OnTextChanged({R.id.et_mobile, R.id.et_verify_code})
+  @OnTextChanged({R.id.et_mobile, R.id.et_verify_code,})
     void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         if (!etMobile.getText().toString().isEmpty() && !etVerifyCode.getText().toString().isEmpty()) {
             btLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.colorSub));
@@ -84,7 +86,7 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
         timeCount.cancel();
     }
 
-  @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_multi})
+  @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_small_album})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_verify_code:
@@ -95,6 +97,9 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
                     showToast("请先获取验证码");
                     return;
                 }
+          case R.id.btn_small_album:
+            Intent SmallAlbumIntent = new Intent(this, SmallAlbumActivity.class);
+            startActivity(SmallAlbumIntent);
                 presenter.login(etMobile.getText().toString(), etVerifyCode.getText().toString(), tempCode);
                 break;
             default:
