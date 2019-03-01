@@ -20,12 +20,17 @@
     <activity android:name=".user.LoginActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
+
         <category android:name="android.intent.category.LAUNCHER"/>
       </intent-filter>
     </activity>
     <activity android:name=".HandlerActivity">
     </activity>
     <activity android:name=".BubbleSortActivity">
+    </activity>
+    <activity android:name=".MemoryLeak.MemoryLeakOneActivity">
+    </activity>
+    <activity android:name=".MemoryLeak.MemoryLeakTwoActivity">
     </activity>
   </application>
 
