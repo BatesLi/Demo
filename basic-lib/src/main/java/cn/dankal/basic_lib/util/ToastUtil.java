@@ -15,7 +15,9 @@ public class ToastUtil {
 
 
     public static void toToast(String str) {
-        if (str == null || str.isEmpty()) return;
+      if (str == null || str.isEmpty()) {
+        return;
+      }
         if (toast == null) {
             toast = Toast.makeText(mContext, str, Toast.LENGTH_SHORT);
         } else {
