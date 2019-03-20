@@ -38,4 +38,5 @@ dependencies {
   implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
   compile 'com.github.bumptech.glide:glide:3.6.1'
   api project(':basic-lib')
+  compile 'org.greenrobot:eventbus:3.0.0'
 }

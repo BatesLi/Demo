@@ -32,6 +32,7 @@
     </activity>
     <activity android:name=".RetrofitRxjavaEventBus.EventBusActivity">
     </activity>
+    <activity android:name=".RetrofitRxjavaEventBus.EventLoginActivity"/>
   </application>
 
 </manifest>
