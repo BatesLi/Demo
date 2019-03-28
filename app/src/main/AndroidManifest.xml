@@ -2,9 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.dankal.demo">
 
-  <uses-permission android:name="android.permission.INTERNET"/>
-
-  <!-- To auto-complete the email text field in the login form with the user's emails -->
+  <uses-permission
+      android:name="android.permission.INTERNET"/> <!-- To auto-complete the email text field in the login form with the user's emails -->
   <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
   <uses-permission android:name="android.permission.READ_PROFILE"/>
   <uses-permission android:name="android.permission.READ_CONTACTS"/>
@@ -17,6 +16,10 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
+    <activity android:name=".skip.ArithmeticActivity">
+    </activity>
+    <activity android:name=".skip.SkipActivity">
+    </activity>
     <activity android:name=".user.LoginActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
@@ -25,7 +28,8 @@
     </activity>
     <activity android:name=".HandlerActivity">
     </activity>
-    <activity android:name=".BubbleSortActivity">
+    <activity android:name=".BubbleSortActivity"
+        android:launchMode="singleInstance">
     </activity>
   </application>
 

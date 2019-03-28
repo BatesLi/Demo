@@ -1,5 +1,6 @@
 package cn.dankal.demo.user;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -10,6 +11,8 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
 import cn.dankal.demo.R;
+import cn.dankal.demo.skip.ArithmeticActivity;
+import cn.dankal.demo.skip.SkipActivity;
 
 /**
  * @author leaflc
@@ -26,6 +29,9 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     Button btVerifyCode;
     @BindView(R.id.bt_login)
     Button btLogin;
+
+  @BindView(R.id.btn_arithmetic) Button mBtnArithmetic;//算法知识点模块
+  @BindView(R.id.btn_skip_activity) Button mBtnSkipActivity;//整理activity意外结束如何恢复知识点
 
     private LoginPresenter presenter = new LoginPresenter();
     private TimeCount timeCount;
@@ -83,7 +89,8 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
         timeCount.cancel();
     }
 
-  @OnClick({R.id.bt_verify_code, R.id.bt_login})
+  @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_arithmetic
+      , R.id.btn_skip_activity})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_verify_code:
@@ -95,6 +102,14 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
                     return;
                 }
                 presenter.login(etMobile.getText().toString(), etVerifyCode.getText().toString(), tempCode);
+              break;
+          case R.id.btn_arithmetic:
+            Intent intentArithmetic = new Intent(this, ArithmeticActivity.class);
+            startActivity(intentArithmetic);
+            break;
+          case R.id.btn_skip_activity:
+            Intent intentSkip = new Intent(this, SkipActivity.class);
+            startActivity(intentSkip);
                 break;
             default:
                 break;
