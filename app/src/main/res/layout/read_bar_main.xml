@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+
+  <FrameLayout
+      android:layout_width="match_parent" android:layout_height="72dp">
+
+    <android.support.v7.widget.Toolbar android:id="@+id/tool_bar_read"
+        android:layout_width="match_parent" android:layout_height="72dp"
+        android:background="#ffce3d3a" android:fitsSystemWindows="true"
+        android:minHeight="?attr/actionBarSize" app:contentInsetStart="0.0dp"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+      <FrameLayout android:id="@+id/frame_layout_title_menu"
+        android:layout_width="wrap_content" android:layout_height="match_parent"
+        android:background="?attr/selectableItemBackgroundBorderless" android:paddingLeft="15dp"
+        android:paddingRight="15dp">
+
+      <ImageView android:id="@+id/img_title_menu"
+          android:layout_width="35dp" android:layout_height="wrap_content"
+          android:layout_gravity="center" android:src="@mipmap/titlebar_menu"/>
+    </FrameLayout>
+
+      <RadioGroup android:id="@+id/radio_btn_group_control"
+          android:layout_width="wrap_content" android:layout_height="match_parent"
+          android:layout_gravity="center" android:orientation="horizontal">
+
+        <RadioButton android:id="@+id/radio_btn_daily"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:button="@null" android:drawableTop="@drawable/title_bar_disco"
+            android:gravity="center"/>
+
+        <RadioButton android:id="@+id/radio_btn_music"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:button="@null" android:checked="true"
+            android:drawableTop="@drawable/title_bar_music"  />
+
+        <RadioButton android:id="@+id/radio_btn_friend"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:button="@null" android:drawableTop="@drawable/title_bar_friends" />
+      </RadioGroup>
+    </android.support.v7.widget.Toolbar>
+
+    <com.miguelcatalan.materialsearchview.MaterialSearchView android:id="@+id/view_search"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="24dp" android:layout_gravity="right" />
+  </FrameLayout>
+
+  <FrameLayout
+      android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <android.support.v4.view.ViewPager android:id="@+id/view_pager_content"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        android:background="@color/colorPrimary" android:descendantFocusability="blocksDescendants" />
+  </FrameLayout>
+
+</LinearLayout>

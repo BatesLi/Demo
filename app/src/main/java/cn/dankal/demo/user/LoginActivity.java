@@ -1,5 +1,6 @@
 package cn.dankal.demo.user;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -10,6 +11,7 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
 import cn.dankal.demo.R;
+import cn.dankal.demo.Read.ReadActivity;
 
 /**
  * @author leaflc
@@ -26,6 +28,8 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     Button btVerifyCode;
     @BindView(R.id.bt_login)
     Button btLogin;
+
+    @BindView(R.id.btn_read) Button mBtnRead;//read项目入口
 
     private LoginPresenter presenter = new LoginPresenter();
     private TimeCount timeCount;
@@ -83,7 +87,8 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
         timeCount.cancel();
     }
 
-  @OnClick({R.id.bt_verify_code, R.id.bt_login})
+  @OnClick({R.id.bt_verify_code, R.id.bt_login
+  ,R.id.btn_read})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_verify_code:
@@ -95,6 +100,10 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
                     return;
                 }
                 presenter.login(etMobile.getText().toString(), etVerifyCode.getText().toString(), tempCode);
+                break;
+            case R.id.btn_read:
+                Intent readIntent = new Intent(this, ReadActivity.class);
+                startActivity(readIntent);
                 break;
             default:
                 break;
