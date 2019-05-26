@@ -12,7 +12,7 @@ import cn.dankal.demo.Read.app.AppConstants;
 import cn.dankal.demo.Read.base.BaseFragment;
 import java.util.ArrayList;
 
-public class HomeFragment extends BaseFragment {
+public class MusicFragment extends BaseFragment {
 
   @NonNull
   @BindView(R.id.tab_gank) TabLayout mTabGank;
