@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:layout_marginTop="80dp"
+    android:layout_marginBottom="50dp">
+
+  <LinearLayout
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:orientation="horizontal">
+
+    <EditText android:id="@+id/edit_input_insert"
+        android:layout_width="0dp" android:layout_weight="5"
+        android:layout_height="wrap_content" android:hint="@string/sqlite_input_inset"
+        android:textColorHint="#CCCCCC"/>
+    <Button android:id="@+id/btn_execute_insert"
+        android:layout_width="0dp" android:layout_weight="2"
+        android:layout_height="wrap_content" android:text="@string/sqlite_execute_insert"/>
+    <Button android:id="@+id/btn_insert_clear_data"
+        android:layout_width="0dp" android:layout_weight="2"
+        android:layout_height="wrap_content" android:text="@string/sqlite_insert_clear_data"/>
+  </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent" android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/edit_update_before"
+        android:layout_width="0dp" android:layout_weight="2.5"
+        android:layout_height="wrap_content" android:hint="@string/sqlite_update_before"
+        android:textColorHint="#CCCCCC"/>
+    <EditText android:id="@+id/edit_update_after"
+        android:layout_width="0dp" android:layout_weight="2.5"
+        android:layout_height="wrap_content" android:hint="@string/sqlite_update_after"
+        android:textColorHint="#CCCCCC"/>
+    <Button android:id="@+id/btn_execute_update"
+        android:layout_width="0dp" android:layout_weight="2"
+        android:layout_height="wrap_content" android:text="@string/sqlite_execute_update"/>
+    <Button android:id="@+id/btn_update_clear_data"
+        android:layout_width="0dp" android:layout_weight="2"
+        android:layout_height="wrap_content" android:text="@string/sqlite_update_clear_data"/>
+  </LinearLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent" android:layout_height="wrap_content">
+    <EditText android:id="@+id/edit_input_delete_content"
+        android:layout_width="0dp" android:layout_weight="5"
+        android:layout_height="wrap_content" android:hint="@string/sqlite_input_delete_content"
+        android:textColorHint="#CCCCCC"/>
+    <Button android:id="@+id/btn_execute_delete"
+        android:layout_width="0dp" android:layout_weight="2"
+        android:layout_height="wrap_content" android:text="@string/sqlite_execute_delete"/>
+    <Button android:id="@+id/btn_delete_clear_data"
+        android:layout_width="0dp" android:layout_weight="2"
+        android:layout_height="wrap_content" android:text="@string/sqlite_delete_clear_data"/>
+  </LinearLayout>
+  <Button android:id="@+id/btn_query_all"
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:text="@string/sqlite_query_all"/>
+  <Button android:id="@+id/btn_clear_query"
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:text="@string/sqlite_clear_query"/>
+  <TextView android:id="@+id/txt_hint_view"
+      android:layout_width="match_parent" android:layout_height="300dp"
+      android:layout_marginVertical="50dp" android:layout_marginLeft="20dp"
+      android:layout_marginRight="20dp" android:hint="@string/sqlite_hint_view"
+      android:textColorHint="#CCCCCC" android:textColor="#6666FF"
+      android:textSize="25dp"/>
+
+</LinearLayout>

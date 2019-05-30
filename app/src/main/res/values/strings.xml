@@ -24,4 +24,19 @@
 
   <!-- TODO: Remove or change this placeholder text -->
   <string name="hello_blank_fragment">Hello blank fragment</string>
+
+  <!--SQLite-->
+  <string name="sqlite_input_inset">请输入要插入的数据</string>
+  <string name="sqlite_execute_insert">执行插入</string>
+  <string name="sqlite_insert_clear_data">清除</string>
+  <string name="sqlite_update_before">请输入更新前的内容</string>
+  <string name="sqlite_update_after">请输入更新后的内容</string>
+  <string name="sqlite_execute_update">执行更新</string>
+  <string name="sqlite_update_clear_data">清除</string>
+  <string name="sqlite_input_delete_content">请输入要删除的内容</string>
+  <string name="sqlite_execute_delete">执行删除</string>
+  <string name="sqlite_delete_clear_data">清除</string>
+  <string name="sqlite_query_all">查询所有</string>
+  <string name="sqlite_clear_query">清除查询</string>
+  <string name="sqlite_hint_view">提示查询内容</string>
 </resources>
