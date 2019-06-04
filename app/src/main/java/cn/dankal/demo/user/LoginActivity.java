@@ -1,5 +1,6 @@
 package cn.dankal.demo.user;
 
+import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -10,6 +11,7 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
 import cn.dankal.demo.R;
+import cn.dankal.demo.SearchPractise.SearchOneActivity;
 
 /**
  * @author leaflc
@@ -91,7 +93,9 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
                 break;
             case R.id.bt_login:
                 if (tempCode==null){
-                    showToast("请先获取验证码");
+                  Intent intent = new Intent(LoginActivity.this, SearchOneActivity.class);
+                  startActivity(intent);
+                  //showToast("请先获取验证码");
                     return;
                 }
                 presenter.login(etMobile.getText().toString(), etVerifyCode.getText().toString(), tempCode);
