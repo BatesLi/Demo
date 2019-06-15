@@ -28,6 +28,14 @@ import io.reactivex.schedulers.Schedulers;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author BatesLi
+ * @date
+ * @org
+ * @email
+ * @describe
+ */
+
 public class SearchOneActivity extends AppCompatActivity {
 
   private RecordDa mRecordDa;
@@ -61,9 +69,9 @@ public class SearchOneActivity extends AppCompatActivity {
   }
 
   //RxJava的使用
+
   private void initData() {
     Observable.create(new ObservableOnSubscribe<List<String>>() {
-
       @Override public void subscribe(ObservableEmitter<List<String>> emitter) throws Exception {
         emitter.onNext(mRecordDa.getRecordByNumber(DEFAULT_RECORD_NUMBER));
       }
