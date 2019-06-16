@@ -68,8 +68,9 @@ public class SearchOneActivity extends AppCompatActivity {
     initView();
   }
 
-  //RxJava的使用
-
+  /**
+   * RxJava的使用
+   */
   private void initData() {
     Observable.create(new ObservableOnSubscribe<List<String>>() {
       @Override public void subscribe(ObservableEmitter<List<String>> emitter) throws Exception {
