@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -96,6 +97,12 @@ public class SearchOneActivity extends AppCompatActivity {
   }
 
   private void initView() {
+    //数据监听接口的回调
+    mRecordDa.setNotifyDataChanged(new RecordDa.NotifyDataChanged() {
+      @Override public void notifyDataChanged() {
+        initData();
+      }
+    });
     /*
      * 创建历史标签适配器，设置标签对应的内容
      * */
@@ -129,7 +136,7 @@ public class SearchOneActivity extends AppCompatActivity {
       }
     });
     //view的回调
-    /*flSearchRecords.getViewTreeObserver().addOnGlobalLayoutListener(
+    flSearchRecords.getViewTreeObserver().addOnGlobalLayoutListener(
         new ViewTreeObserver.OnGlobalLayoutListener() {
           @Override public void onGlobalLayout() {
             boolean isOverFlow = flSearchRecords.isOverFlow();
@@ -140,7 +147,7 @@ public class SearchOneActivity extends AppCompatActivity {
                 imgArrow.setVisibility(View.GONE);
             }
           }
-        });*/
+        });
     //清除用户指定的所有记录
     imgClearAllRecords.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
@@ -171,6 +178,8 @@ public class SearchOneActivity extends AppCompatActivity {
 
   @Override
   protected void onDestroy() {
+    mRecordDa.closeDatabase();
+    mRecordDa.removeNotifyDatabaseChanged();
     super.onDestroy();
   }
 }
