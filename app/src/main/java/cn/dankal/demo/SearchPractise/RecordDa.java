@@ -1,12 +1,15 @@
 package cn.dankal.demo.SearchPractise;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /*
@@ -20,9 +23,17 @@ public class RecordDa {
   private String mUsername;
   private NotifyDataChanged notifyDataChanged;
 
-  public void setNotifyDataChanged(
-      NotifyDataChanged notifyDataChanged) {
-    this.notifyDataChanged = notifyDataChanged;
+  public RecordDa(Context context, String username) {
+    recordSQLiteOpenHelper = new RecordSQLiteOpenHelper(context);
+    mUsername = username;
+  }
+
+  private synchronized SQLiteDatabase getReadableDatabase() {
+    return recordSQLiteOpenHelper.getReadableDatabase();
+  }
+
+  private synchronized SQLiteDatabase getWritableDatabase() {
+    return recordSQLiteOpenHelper.getWritableDatabase();
   }
 
   /**
@@ -42,14 +53,14 @@ public class RecordDa {
         //对数据库添加搜索记录
         sqLiteDatabase.insert(TABLE_NAME, null, contentValues);
       } else {
-        /*Date date = new Date();
-        @SuppressLint("SimpleDataFormat")SimpleDateFormat simpleDateFormat
+        Date date = new Date();
+        @SuppressLint("SimpleDataFormat") SimpleDateFormat simpleDateFormat
              = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         //更新搜索历史数据时间
         ContentValues contentValues = new ContentValues();
         contentValues.put("time",simpleDateFormat.format(date));
         sqLiteDatabase.update(TABLE_NAME,contentValues,"_id = ?"
-        ,new String[]{Integer.toString(recordId)});*/
+            , new String[] {Integer.toString(recordId)});
       }
       if (notifyDataChanged != null) {
         notifyDataChanged.notifyDataChanged();
@@ -59,28 +70,31 @@ public class RecordDa {
     }
   }
 
-  public RecordDa(Context context, String username) {
-    recordSQLiteOpenHelper = new RecordSQLiteOpenHelper(context);
-    mUsername = username;
-  }
-
-  private synchronized SQLiteDatabase getReadableDatabase() {
-    return recordSQLiteOpenHelper.getReadableDatabase();
-  }
-
-  private synchronized SQLiteDatabase getWritableDatabase() {
-    return recordSQLiteOpenHelper.getWritableDatabase();
+  public void setNotifyDataChanged(
+      NotifyDataChanged notifyDataChanged) {
+    this.notifyDataChanged = notifyDataChanged;
   }
 
   /**
-   * 关闭数据库
+   * 通过记录删除记录
+   * @param
+   * @return Record
    */
-  public void closeDatabase() {
-    if (sqLiteDatabase != null) {
-      sqLiteDatabase.close();
+  public int deleteRecord(String record) {
+    int recordId = -1;
+    try {
+      sqLiteDatabase = getWritableDatabase();
+      recordId = sqLiteDatabase.delete(TABLE_NAME, "username = ? and keyword = ?"
+          , new String[] {mUsername, record});
+      if (notifyDataChanged != null) {
+        notifyDataChanged.notifyDataChanged();
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+      Log.e(TABLE_NAME, "清除所有历史记录失败");
     }
+    return recordId;
   }
-
   /**
    * 获取指定数量的搜索记录
    */
@@ -152,6 +166,42 @@ public class RecordDa {
       }
     }
     return isHanRecord;
+  }
+
+  /**
+   * 模糊查询
+   * @param record
+   * @return 类似记录
+   */
+  public List<String> querySimilarityRecord(String record) {
+    List<String> similarityRecord = new ArrayList<>();
+    Cursor cursor = null;
+    try {
+      sqLiteDatabase = getReadableDatabase();
+      cursor = sqLiteDatabase.query(TABLE_NAME, null, "username = ? and keyword like '%?%'",
+          new String[] {mUsername, record}, null, null, "order by time desc");
+      while (cursor.moveToNext()) {
+        //getColumnIndexOrThrow(String columnName) 从零开始返回指定列名称，如果不存在将抛出IllegalArgumentException 异常。
+        String name = cursor.getString(cursor.getColumnIndexOrThrow("keyword"));
+        similarityRecord.add(name);
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    } finally {
+      if (cursor != null) {
+        cursor.close();
+      }
+    }
+    return similarityRecord;
+  }
+
+  /**
+   * 关闭数据库
+   */
+  public void closeDatabase() {
+    if (sqLiteDatabase != null) {
+      sqLiteDatabase.close();
+    }
   }
 
   /**

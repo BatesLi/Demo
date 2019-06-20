@@ -68,7 +68,6 @@
         app:max_select="1" app:limit_line_count="3"/>
 
     <ImageView android:id="@+id/img_arrow"
-        android:layout_width="wrap_content" android:layout_height="wrap_content"
-        android:src="@mipmap/ic_arrow" android:visibility="gone"/>
+        android:layout_width="wrap_content" android:layout_height="wrap_content"/>
   </LinearLayout>
 </android.support.constraint.ConstraintLayout>

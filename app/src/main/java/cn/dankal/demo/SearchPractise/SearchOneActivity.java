@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -121,8 +122,20 @@ public class SearchOneActivity extends AppCompatActivity {
     //setOnTagClickListener，当点击某个Tag回调
     flSearchRecords.setOnTagClickListener(new TagFlowLayout.OnTagClickListener() {
       @Override public void onTagClick(View view, int position, FlowLayout parent) {
+        //清除之前的搜索记录
+        editQuery.setText("");
+        //将获取到的字符串传到搜索结果界面,点击后搜索对应条目内容
         editQuery.setText(mRecordList.get(position));
         editQuery.setSelection(editQuery.length());
+      }
+    });
+    flSearchRecords.setOnLongClickListener(new TagFlowLayout.OnLongClickListener() {
+      @Override public void onLongClick(View view, int position) {
+        showDialog("确定需要删除这条历史记录？", new DialogInterface.OnClickListener() {
+          @Override public void onClick(DialogInterface dialog, int which) {
+            mRecordDa.deleteRecord(mRecordList.get(position));
+          }
+        });
       }
     });
     //添加搜索记录的逻辑
@@ -135,16 +148,18 @@ public class SearchOneActivity extends AppCompatActivity {
         }
       }
     });
-    //view的回调
+    //通过ViewTreeObserver .addOnGlobalLayoutListener来获得宽高 || 注册观察者，监听变化
     flSearchRecords.getViewTreeObserver().addOnGlobalLayoutListener(
         new ViewTreeObserver.OnGlobalLayoutListener() {
           @Override public void onGlobalLayout() {
             boolean isOverFlow = flSearchRecords.isOverFlow();
             boolean isLimit = flSearchRecords.isLimit();
             if (isOverFlow && isLimit) {
-                imgArrow.setVisibility(View.VISIBLE);
+              imgArrow.setImageDrawable(
+                  ContextCompat.getDrawable(SearchOneActivity.this, R.mipmap.ic_arrow));
             }else {
-                imgArrow.setVisibility(View.GONE);
+              imgArrow.setImageDrawable(
+                  ContextCompat.getDrawable(SearchOneActivity.this, R.mipmap.arrow_up));
             }
           }
         });
@@ -163,6 +178,13 @@ public class SearchOneActivity extends AppCompatActivity {
     imgClearSearch.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
         editQuery.setText("");
+      }
+    });
+    //箭头图标的点击事件
+    imgArrow.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        flSearchRecords.setLimit(false);
+        mTagAdapter.notifyDataChanged();
       }
     });
   }

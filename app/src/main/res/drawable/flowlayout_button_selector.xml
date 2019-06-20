@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <item android:color="@color/theme"
+      android:drawable="@drawable/flowlayout_shape_button_circle"
+      android:state_checked="true"/>
+
+  <item android:drawable="@drawable/flowlayout_shape_button_back"/>
+</selector>
