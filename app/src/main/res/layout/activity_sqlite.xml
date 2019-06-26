@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:layout_margin="5dp">
+
+  <TextView
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:text="数据库名：database.db 表名：MyTable 表属性如下列表" android:gravity="center"/>
+
+  <LinearLayout
+      android:layout_margin="2dp" android:layout_width="match_parent"
+      android:layout_height="40dp" android:orientation="horizontal">
+
+    <EditText android:id="@+id/edit_sql"
+        android:layout_width="0dp" android:layout_weight="3"
+        android:layout_height="match_parent"/>
+    <Button android:id="@+id/btn_execute"
+        android:layout_width="0dp" android:layout_height="match_parent"
+        android:layout_weight="1" android:text="执行语句"
+        android:background="@color/colorAccent" android:layout_marginLeft="10dp"/>
+  </LinearLayout>
+  <LinearLayout
+      android:layout_margin="2dp" android:layout_width="match_parent"
+      android:layout_height="40dp" android:orientation="horizontal">
+
+    <Button android:id="@+id/btn_insert"
+        android:background="#88ff0000" android:text="新增DEMO"
+        android:layout_width="0dp" android:layout_weight="1"
+        android:layout_height="match_parent"/>
+
+    <Button android:id="@+id/btn_delete"
+        android:background="#8800ff00" android:text="删除DEMO"
+        android:layout_width="0dp" android:layout_weight="1"
+        android:layout_height="match_parent"/>
+
+    <Button android:id="@+id/btn_update"
+        android:background="#880000ff" android:text="修改DEMO"
+        android:layout_width="0dp" android:layout_weight="1"
+        android:layout_height="match_parent"/>
+  </LinearLayout>
+
+  <LinearLayout
+      android:layout_margin="2dp" android:layout_width="match_parent"
+      android:layout_height="40dp" android:orientation="horizontal">
+
+    <Button android:id="@+id/btn_query1"
+        android:background="#8800ff00" android:text="查找DEMO"
+        android:layout_width="0dp" android:layout_weight="1"
+        android:layout_height="match_parent"/>
+
+    <Button android:id="@+id/btn_query2"
+        android:background="#880000ff" android:text="统计查询DEMO"
+        android:layout_width="0dp" android:layout_weight="1"
+        android:layout_height="match_parent"/>
+
+    <Button android:id="@+id/btn_query3"
+        android:background="#88ff0000" android:text="比较查询DEMO"
+        android:layout_width="0dp" android:layout_weight="1"
+        android:layout_height="match_parent"/>
+
+  </LinearLayout>
+
+  <TextView android:id="@+id/tv_sqlmsg"
+      android:layout_width="match_parent" android:layout_height="wrap_content"
+      android:gravity="center" android:visibility="gone"
+      android:layout_margin="2dp"/>
+
+  <ListView android:id="@+id/list_view_sqlite"
+      android:layout_width="match_parent" android:layout_height="match_parent"
+      android:layout_margin="2dp"/>
+</LinearLayout>
+
+

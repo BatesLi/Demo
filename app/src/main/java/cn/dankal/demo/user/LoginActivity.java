@@ -12,6 +12,7 @@ import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
 import cn.dankal.demo.R;
 import cn.dankal.demo.SearchPractise.SearchOneActivity;
+import cn.dankal.demo.SearchPractise.SearchTwo.SearchTwoActivity;
 
 /**
  * @author leaflc
@@ -28,6 +29,8 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     Button btVerifyCode;
     @BindView(R.id.bt_login)
     Button btLogin;
+
+  @BindView(R.id.btn_record_two) Button mBtnRecordTwo;
 
     private LoginPresenter presenter = new LoginPresenter();
     private TimeCount timeCount;
@@ -85,7 +88,7 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
         timeCount.cancel();
     }
 
-  @OnClick({R.id.bt_verify_code, R.id.bt_login})
+  @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_record_two})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_verify_code:
@@ -99,6 +102,10 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
                     return;
                 }
                 presenter.login(etMobile.getText().toString(), etVerifyCode.getText().toString(), tempCode);
+              break;
+          case R.id.btn_record_two:
+            Intent intentSearchTwo = new Intent(LoginActivity.this, SearchTwoActivity.class);
+            startActivity(intentSearchTwo);
                 break;
             default:
                 break;
