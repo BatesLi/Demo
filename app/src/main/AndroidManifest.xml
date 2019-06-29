@@ -16,7 +16,8 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".SQLite.SQLiteActivity">
+    <activity android:name=".SQLite.SQLiteActivity"
+        android:windowSoftInputMode="stateHidden">
     </activity>
     <activity android:name=".SearchPractise.SearchTwo.SearchTwoActivity">
     </activity>

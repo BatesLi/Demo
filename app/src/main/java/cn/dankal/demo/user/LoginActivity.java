@@ -11,6 +11,7 @@ import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
 import cn.dankal.demo.R;
+import cn.dankal.demo.SQLite.SQLiteActivity;
 import cn.dankal.demo.SearchPractise.SearchOneActivity;
 import cn.dankal.demo.SearchPractise.SearchTwo.SearchTwoActivity;
 
@@ -88,7 +89,8 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
         timeCount.cancel();
     }
 
-  @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_record_two})
+  @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_record_two
+      , R.id.btn_sqlite})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_verify_code:
@@ -107,6 +109,10 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
             Intent intentSearchTwo = new Intent(LoginActivity.this, SearchTwoActivity.class);
             startActivity(intentSearchTwo);
                 break;
+          case R.id.btn_sqlite:
+            Intent intentSQLite = new Intent(LoginActivity.this, SQLiteActivity.class);
+            startActivity(intentSQLite);
+            break;
             default:
                 break;
         }
