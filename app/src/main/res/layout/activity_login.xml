@@ -146,4 +146,12 @@
   <Button android:id="@+id/btn_sqlite"
       android:layout_width="wrap_content" android:layout_height="wrap_content"
       android:text="SQLite" android:layout_marginLeft="10dp"/>
+
+  <Button android:id="@+id/btn_search_retrofit"
+      android:layout_width="wrap_content" android:layout_height="wrap_content"
+      android:text="SearchRetrofit" android:layout_marginLeft="10dp"/>
+
+  <Button android:id="@+id/btn_wan_android_search"
+      android:layout_width="wrap_content" android:layout_height="wrap_content"
+      android:layout_marginLeft="10dp" android:text="WanAndroidSearch"/>
 </LinearLayout>

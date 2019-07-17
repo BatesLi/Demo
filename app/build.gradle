@@ -42,4 +42,13 @@ dependencies {
   implementation 'com.github.bumptech.glide:glide:3.6.1'
   api project(':basic-lib')
   annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+  api 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+  //滑动返回
+  implementation 'cn.bingoogolapple:bga-swipebacklayout:1.2.0@aar'
+  //沉浸式顶栏框架
+  implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta02'
+  implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0-beta02'
+  //OkHttp,后期会用OKGo逐渐代替okhttp
+  implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+  implementation 'com.lzy.net:okgo:3.0.4'
 }

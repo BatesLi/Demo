@@ -16,7 +16,16 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
-    <activity android:name=".SQLite.SQLiteActivity"
+    <activity android:name=".SearchPractise.SearchWanAndroid.SearchResultActivity">
+    </activity>
+    <activity android:name=".SearchPractise.SearchWanAndroid.WanAndroidActivity">
+    </activity>
+    <activity
+        android:name=".SearchPractise.SearchRetrofit.SearchRetrofitActivity"
+        android:windowSoftInputMode="stateHidden|adjustNothing">
+    </activity>
+    <activity
+        android:name=".SQLite.SQLiteActivity"
         android:windowSoftInputMode="stateHidden">
     </activity>
     <activity android:name=".SearchPractise.SearchTwo.SearchTwoActivity">

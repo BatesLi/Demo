@@ -1,6 +1,7 @@
 package cn.dankal.demo.user;
 
 import android.content.Intent;
+import android.icu.util.TaiwanCalendar;
 import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
@@ -13,7 +14,9 @@ import cn.dankal.basic_lib.base.BaseActivity;
 import cn.dankal.demo.R;
 import cn.dankal.demo.SQLite.SQLiteActivity;
 import cn.dankal.demo.SearchPractise.SearchOneActivity;
+import cn.dankal.demo.SearchPractise.SearchRetrofit.SearchRetrofitActivity;
 import cn.dankal.demo.SearchPractise.SearchTwo.SearchTwoActivity;
+import cn.dankal.demo.SearchPractise.SearchWanAndroid.WanAndroidActivity;
 
 /**
  * @author leaflc
@@ -32,6 +35,8 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     Button btLogin;
 
   @BindView(R.id.btn_record_two) Button mBtnRecordTwo;
+  @BindView(R.id.btn_search_retrofit) Button mBtnSearchRetrofit;
+  @BindView(R.id.btn_wan_android_search) Button mBtnWanAndroidSearch;
 
     private LoginPresenter presenter = new LoginPresenter();
     private TimeCount timeCount;
@@ -90,7 +95,7 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     }
 
   @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_record_two
-      , R.id.btn_sqlite})
+      , R.id.btn_sqlite, R.id.btn_search_retrofit, R.id.btn_wan_android_search})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_verify_code:
@@ -112,6 +117,16 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
           case R.id.btn_sqlite:
             Intent intentSQLite = new Intent(LoginActivity.this, SQLiteActivity.class);
             startActivity(intentSQLite);
+            break;
+          case R.id.btn_search_retrofit:
+            Intent intentSearchRetrofit =
+                new Intent(LoginActivity.this, SearchRetrofitActivity.class);
+            startActivity(intentSearchRetrofit);
+            break;
+          case R.id.btn_wan_android_search:
+            Intent intentWanAndroidSearch =
+                new Intent(LoginActivity.this, WanAndroidActivity.class);
+            startActivity(intentWanAndroidSearch);
             break;
             default:
                 break;
