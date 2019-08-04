@@ -9,13 +9,15 @@
   <uses-permission android:name="android.permission.READ_CONTACTS"/>
 
   <application
-      android:name="cn.dankal.basic_lib.DankalApplication"
+      android:name=".SearchPractise.SearchWanAndroid.DemoAndroid"
       android:allowBackup="true"
       android:icon="@mipmap/ic_launcher"
       android:label="@string/app_name"
       android:roundIcon="@mipmap/ic_launcher_round"
       android:supportsRtl="true"
       android:theme="@style/AppTheme">
+    <activity android:name=".SearchPractise.SearchWanAndroid.WebActivity">
+    </activity>
     <activity android:name=".SearchPractise.SearchWanAndroid.SearchResultActivity">
     </activity>
     <activity android:name=".SearchPractise.SearchWanAndroid.WanAndroidActivity">

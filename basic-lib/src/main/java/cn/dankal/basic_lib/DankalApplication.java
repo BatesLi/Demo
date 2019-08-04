@@ -2,8 +2,6 @@ package cn.dankal.basic_lib;
 
 import android.app.Application;
 import android.content.Context;
-
-
 import cn.dankal.basic_lib.util.ToastUtil;
 
 /**
@@ -31,9 +29,4 @@ public class DankalApplication extends Application {
     public static Context getContext() {
         return context;
     }
-
-
-
-
-
 }

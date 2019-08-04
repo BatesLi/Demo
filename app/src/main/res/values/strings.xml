@@ -28,4 +28,7 @@
   <string name="search_crux">请输入搜索关键字</string>
   <string name="search_txt">搜索</string>
   <string name="search_history_txt">搜索历史</string>
+  <string name="title_activity_main2">Main2Activity</string>
+  <!--wanAndroid-->
+  <string name="web_title">文章浏览</string>
 </resources>

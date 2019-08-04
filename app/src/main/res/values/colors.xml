@@ -56,4 +56,15 @@
   <color name="light_black">#99000000</color>
   <color name="bg_daily_mode">#FFF</color>
   <color name="bg_edt_view">#e6e7ed</color>
+  <!--searchWanAndroidResult-->
+  <color name="text_daily_mode_one">#000</color>
+  <color name="text_daily_mode">#393B4D</color>
+  <color name="bg_daily_white">#FFF</color>
+  <color name="bg_rv_item_tv">#e6e7ed</color>
+  <!--webView进度条-->
+  <color name="progress_bar_web_start">#37b537</color>
+  <color name="progress_bar_web_center">#37b537</color>
+  <color name="progress_bar_web_end">#37b537</color>
+  <color name="bg_daily_main_daily">#fafafa</color>
+  <color name="bg_daily_main_night">#303030</color>
 </resources>

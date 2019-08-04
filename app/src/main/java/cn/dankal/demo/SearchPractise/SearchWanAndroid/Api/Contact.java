@@ -4,7 +4,7 @@ import cn.dankal.demo.SearchPractise.SearchWanAndroid.base.BaseView;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.model.SearchResult;
 import java.util.List;
 
-public interface Contract {
+public interface Contact {
 
   interface SearchPresenter {
     void getHotKey();
@@ -20,7 +20,7 @@ public interface Contract {
     void getSelectedURL(String URL);
   }
 
-  interface SearchView extends BaseView<Contract.SearchPresenter> {
+  interface SearchView extends BaseView<Contact.SearchPresenter> {
     void initView(List<SearchResult.DataBean.Datas> data);
 
     void setHotKey(String[] keys);

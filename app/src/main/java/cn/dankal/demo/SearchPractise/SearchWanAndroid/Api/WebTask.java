@@ -2,6 +2,7 @@ package cn.dankal.demo.SearchPractise.SearchWanAndroid.Api;
 
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.Utils.StringUtils;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.model.Data;
+import cn.dankal.demo.SearchPractise.SearchWanAndroid.model.SearchResult;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.model.WanAndroid;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
@@ -24,7 +25,7 @@ public class WebTask implements NetTask<Data> {
     return INSTANCE;
   }
 
-  @Override public void execute(LoadTasksCallBack callBack, int... params) {
+  @Override public void execute(final LoadTasksCallBack callBack, final int... params) {
     switch (params[0]) {
       case StringUtils.TYPE_HOT_KEY:
         OkGo.<String>get(StringUtils.URL + StringUtils.HOT_KEY)
@@ -46,9 +47,44 @@ public class WebTask implements NetTask<Data> {
     }
   }
 
-  @Override public void execute(LoadTasksCallBack callBack, String... infos) {
+  @Override public void execute(final LoadTasksCallBack callBack, final String... infos) {
     switch (infos[0]) {
-
+      case StringUtils.TYPE_HOTKEY_CONTENT_ADD:
+      case StringUtils.TYPE_HOTKEY_CONTENT_LOAD:
+        OkGo.<String>post(StringUtils.URL + StringUtils.HOT_KEY_CONTENT + infos[2] + "/json")
+            .params("k", infos[1])
+            .execute(new StringCallback() {
+              @Override public void onSuccess(Response<String> response) {
+                String result = response.body();
+                Gson gson = new Gson();
+                SearchResult searchResult = gson.fromJson(result, SearchResult.class);
+                switch (searchResult.getErrorCode()) {
+                  case 0:
+                    if (infos[0].equals(StringUtils.TYPE_HOTKEY_CONTENT_ADD)) {
+                      callBack.onSuccess(searchResult.getData(),
+                          StringUtils.TYPE_HOME_MORE_ARTICLE_ADD);
+                    } else {
+                      callBack.onSuccess(searchResult.getData(),
+                          StringUtils.TYPE_HOME_MORE_ARTICLE_LOAD);
+                    }
+                    break;
+                  case -1:
+                    callBack.onError(searchResult.getErrorCode(), searchResult.getErrorMsg());
+                    break;
+                  default:
+                    callBack.onFailed();
+                    break;
+                }
+              }
+            });
+        break;
+      default:
+        break;
     }
   }
 }
+
+
+
+
+

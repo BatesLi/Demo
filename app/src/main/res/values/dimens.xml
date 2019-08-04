@@ -8,4 +8,12 @@
   <dimen name="item_margin_half">8dp</dimen>
 
   <dimen name="column_width">80dp</dimen>
+
+  <!--searchWanAndroidResult-->
+  <dimen name="home_top_title_one_size">17sp</dimen>
+  <dimen name="dp_100">100dp</dimen>
+  <dimen name="dp_30">30dp</dimen>
+  <dimen name="dp_8">8dp</dimen>
+  <dimen name="dp_4">4dp</dimen>
+  <dimen name="fab_margin">16dp</dimen>
 </resources>

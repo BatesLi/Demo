@@ -1,7 +1,7 @@
 package cn.dankal.demo.SearchPractise.SearchWanAndroid;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,10 +9,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
-import cn.dankal.basic_lib.util.ToastUtil;
 import cn.dankal.demo.R;
-import cn.dankal.demo.SearchPractise.SearchWanAndroid.Api.Contract;
+import cn.dankal.demo.SearchPractise.SearchWanAndroid.Api.Contact;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.Api.WebTask;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.base.BaseActivity;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.custom.ClearEditText;
@@ -32,9 +30,9 @@ import java.util.List;
  * @describe 玩Android的search模块实现类
  */
 
-public class WanAndroidActivity extends BaseActivity implements Contract.SearchView {
+public class WanAndroidActivity extends BaseActivity implements Contact.SearchView {
 
-  public Contract.SearchPresenter mPresenter;
+  public Contact.SearchPresenter mPresenter;
   @BindView(R.id.edit_wan_search) ClearEditText editWanSearch;
   @BindView(R.id.img_btn_wan_search) ImageButton imgBtnWanSearch;
   @BindView(R.id.flow_layout_wan_search) TagFlowLayout flowLayoutWanSearch;
@@ -54,7 +52,12 @@ public class WanAndroidActivity extends BaseActivity implements Contract.SearchV
 
     imgBtnWanSearch.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
-        startActivity(SearchResultActivity.class);
+        if (!TextUtils.isEmpty(editWanSearch.getText().toString())) {
+          Intent intent = new Intent(v.getContext(), SearchResultActivity.class);
+          intent.putExtra("HOT_KEY", editWanSearch.getText().toString());
+          startActivity(intent);
+          finish();
+        }
       }
     });
   }
@@ -80,7 +83,7 @@ public class WanAndroidActivity extends BaseActivity implements Contract.SearchV
     });
   }
 
-  @Override public void setPresenter(Contract.SearchPresenter presenter) {
+  @Override public void setPresenter(Contact.SearchPresenter presenter) {
     this.mPresenter = presenter;
   }
 
