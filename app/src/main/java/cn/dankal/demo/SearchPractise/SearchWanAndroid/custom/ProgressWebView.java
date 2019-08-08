@@ -26,6 +26,7 @@ public class ProgressWebView extends WebView {
 
   public ProgressWebView(Context context, AttributeSet attributeSet) {
     super(context, attributeSet);
+    initView(context);
   }
 
   private void initView(Context context) {
@@ -52,7 +53,7 @@ public class ProgressWebView extends WebView {
     getSettings().setDisplayZoomControls(false);
 
     setWebChromeClient(new WVChromeClient());
-    //setWebViewClient(new WVClient());
+    setWebViewClient(new WVClient());
   }
 
   public void setOnWebViewListener(OnWebViewListener onWebViewListener) {
@@ -62,7 +63,6 @@ public class ProgressWebView extends WebView {
   //进度回调接口
   public interface OnWebViewListener {
     void onProgressChanged(WebView webView, int newProgress);
-
     void onPageFinish(WebView webView);
   }
 
@@ -72,12 +72,10 @@ public class ProgressWebView extends WebView {
     @Override
     public void onProgressChanged(WebView webView, int newProgress) {
       if (newProgress == progressPrice) {
-        progressBar.setVisibility(GONE);
+        progressBar.setVisibility(GONE);//加载完网页进度条消失
       } else {
-        if (progressBar.getVisibility() == GONE) {
           progressBar.setVisibility(VISIBLE);
           progressBar.setProgress(newProgress);
-        }
       }
       if (onWebViewListener != null) {
         onWebViewListener.onProgressChanged(webView, newProgress);

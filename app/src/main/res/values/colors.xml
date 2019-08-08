@@ -67,4 +67,7 @@
   <color name="progress_bar_web_end">#37b537</color>
   <color name="bg_daily_main_daily">#fafafa</color>
   <color name="bg_daily_main_night">#303030</color>
+  <!--Login-->
+  <color name="green_normal">#37C000</color>
+  <color name="green_pressed">#4fc384</color>
 </resources>

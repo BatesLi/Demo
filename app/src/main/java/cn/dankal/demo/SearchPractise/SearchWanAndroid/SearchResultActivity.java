@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.dankal.basic_lib.util.ToastUtil;
@@ -118,6 +119,20 @@ public class SearchResultActivity extends BaseActivity implements Contact.Search
         mSearchPresenter.getSelectedURL(mSearchResultAdapter.getData().get(position).getLink());
       }
     });
+    mSearchResultAdapter.setOnItemChildClickListener(
+        new BaseQuickAdapter.OnItemChildClickListener() {
+          @Override
+          public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+            switch (view.getId()) {
+              case R.id.img_btn_article_save:
+                Intent intent = new Intent(view.getContext(), WanAndroidLoginActivity.class);
+                startActivity(intent);
+                break;
+              default:
+                break;
+            }
+          }
+        });
   }
 
   @Override public void collectArticle(int position, boolean isCollect) {

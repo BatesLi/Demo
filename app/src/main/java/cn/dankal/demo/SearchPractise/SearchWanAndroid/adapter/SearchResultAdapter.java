@@ -60,6 +60,11 @@ public class SearchResultAdapter
             helper.setBackgroundColor(R.id.txt_article_date, 0);
             helper.setBackgroundColor(R.id.txt_article_chapter_title, 0);
             helper.setBackgroundColor(R.id.txt_article_author_title, 0);
+
+            helper.addOnClickListener(R.id.img_btn_article_save);
+            if (item.isCollect()) {
+
+            }
           }
         }
         break;

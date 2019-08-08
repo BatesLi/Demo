@@ -7,7 +7,7 @@ configurations.all {
 android {
   compileSdkVersion 27
   defaultConfig {
-    applicationId "cn.dankal.demo"
+    applicationId "cn.dankal.demos"
     minSdkVersion 16
     targetSdkVersion 27
     versionCode 1
@@ -51,6 +51,8 @@ dependencies {
   //OkHttp,后期会用OKGo逐渐代替okhttp
   implementation 'com.squareup.okhttp3:okhttp:3.11.0'
   implementation 'com.lzy.net:okgo:3.0.4'
+  //帮助类
+  implementation 'com.blankj:utilcode:1.23.7'
   //轮子哥titlebar框架
   implementation 'com.hjq:titlebar:5.0'
   //RecyclerViewAdapterHelper

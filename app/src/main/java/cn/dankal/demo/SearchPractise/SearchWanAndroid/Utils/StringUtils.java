@@ -17,4 +17,7 @@ public class StringUtils {
 
   public static final String TYPE_HOTKEY_CONTENT_LOAD = "HOTKEY_CONTENT_LOAD";
   public static final String TYPE_HOTKEY_CONTENT_ADD = "HOTKEY_CONTENT_ADD";
+
+  //收藏文章
+
 }
