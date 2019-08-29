@@ -18,6 +18,11 @@ public class StringUtils {
   public static final String TYPE_HOTKEY_CONTENT_LOAD = "HOTKEY_CONTENT_LOAD";
   public static final String TYPE_HOTKEY_CONTENT_ADD = "HOTKEY_CONTENT_ADD";
 
-  //收藏文章
+  //登录
+  public static final String USER_LOGIN = "/user/login";
+  public static final String USER_REGISTER = "/user/register";
+  public static final String USER_LOGOUT = "/user/logout/json";
 
+  public static final String TYPE_LOGIN = "LOGIN";
+  public static final String TYPE_REGISTER = "REGISTER";
 }

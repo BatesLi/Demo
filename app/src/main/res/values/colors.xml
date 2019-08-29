@@ -70,4 +70,7 @@
   <!--Login-->
   <color name="green_normal">#37C000</color>
   <color name="green_pressed">#4fc384</color>
+  <color name="btn_daily_mode">#FAFAFA</color>
+  <color name="bg_card_view">#FFF</color>
+  <color name="divide_line">#FFB7B2B2</color>
 </resources>

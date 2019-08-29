@@ -4,6 +4,7 @@ import cn.dankal.demo.SearchPractise.SearchWanAndroid.Utils.StringUtils;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.model.Data;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.model.SearchResult;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.model.WanAndroid;
+import cn.dankal.demo.SearchPractise.SearchWanAndroid.model.WanAndroid_Content;
 import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
@@ -73,6 +74,56 @@ public class WebTask implements NetTask<Data> {
                     break;
                   default:
                     callBack.onFailed();
+                    break;
+                }
+              }
+            });
+        break;
+      case StringUtils.TYPE_LOGIN:
+        OkGo.<String>post(StringUtils.URL + StringUtils.USER_LOGIN)
+            .params("username", infos[1])
+            .params("password", infos[2])
+            .execute(new StringCallback() {
+              @Override public void onSuccess(Response<String> response) {
+                String result = response.body();
+                Gson gson = new Gson();
+                WanAndroid_Content wanAndroid_content =
+                    gson.fromJson(result, WanAndroid_Content.class);
+                switch (wanAndroid_content.getErrorCode()) {
+                  case 0:
+                    callBack.onSuccess(wanAndroid_content.getData(), 0);
+                    break;
+                  case -1:
+                    callBack.onError(wanAndroid_content.getErrorCode(),
+                        wanAndroid_content.getErrorMsg());
+                    break;
+                  default:
+                    onFinish();
+                    break;
+                }
+              }
+            });
+        break;
+      case StringUtils.TYPE_REGISTER:
+        OkGo.<String>post(StringUtils.URL + StringUtils.USER_REGISTER)
+            .params("username", infos[0])
+            .params("password", infos[2])
+            .params("repassword", infos[2])
+            .execute(new StringCallback() {
+              @Override public void onSuccess(Response<String> response) {
+                String result = response.body();
+                Gson gson = new Gson();
+                WanAndroid_Content wanAndroid_content =
+                    gson.fromJson(result, WanAndroid_Content.class);
+                switch (wanAndroid_content.getErrorCode()) {
+                  case 0:
+                    callBack.onSuccess(wanAndroid_content.getData(), 0);
+                    break;
+                  case -1:
+                    callBack.onError(wanAndroid_content.getErrorCode(),
+                        wanAndroid_content.getErrorMsg());
+                    break;
+                  default:
                     break;
                 }
               }

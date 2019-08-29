@@ -24,7 +24,7 @@ import io.reactivex.schedulers.Schedulers;
 public class LoginPresenter implements LoginContact.LoginPresenter {
   //view层不能持有Model层的引用，不能直接去更新Model层，必须通过Presenter层，
   // Presenter层中也不能直接操作View及相关的UI控件，必须通过View层的引用来操作。
-    private LoginContact.LoginView loginView;
+  private LoginContact.LoginView loginView;//不能为空？应该怎么办
 
     @Override
     public void login(String phoneNum, String verifyCode, String tempCode) {
