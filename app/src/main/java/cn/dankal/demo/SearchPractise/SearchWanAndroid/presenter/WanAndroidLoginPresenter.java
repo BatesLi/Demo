@@ -27,7 +27,7 @@ public class WanAndroidLoginPresenter extends BasePresenter
   }
 
   @Override public void onSuccess(Data data, int... params) {
-    //mLoginView.LoginSuccess(data);
+    mLoginView.LoginSuccess(data);
   }
 
   @Override public void onStart() {

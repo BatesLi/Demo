@@ -1,6 +1,7 @@
 <resources>
   <string name="app_name">Demo</string>
   <string name="login">登录</string>
+  <string name="user_btn_register">注册</string>
   <string name="mobile">手机号码</string>
   <string name="please_input_mobile">请输入手机号</string>
   <string name="verify_code">验证码</string>

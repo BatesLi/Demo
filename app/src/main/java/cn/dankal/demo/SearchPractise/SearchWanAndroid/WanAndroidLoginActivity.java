@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -48,6 +49,9 @@ public class WanAndroidLoginActivity extends BaseActivity
   @BindView(R.id.card_view_login) CardView mCardViewLogin;
   @BindView(R.id.btn_login) Button mBtnLogin;
 
+  @BindString(R.string.user_btn_register) String strRegister;
+  @BindString(R.string.login) String strLogin;
+
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -71,7 +75,7 @@ public class WanAndroidLoginActivity extends BaseActivity
     EventBus.getDefault().unregister(this);
   }
 
-  //通过EventBus，更新UI
+  //通过EventBus，更新UI?
   @Subscribe
 
   /**
@@ -82,11 +86,11 @@ public class WanAndroidLoginActivity extends BaseActivity
   public void LoginOnClick(View view) {
     if (!TextUtils.isEmpty(mEditUserNameInput.getText().toString())
         && !TextUtils.isEmpty(mEditPasswordInput.getText().toString())) {
-      if (mBtnLogin.getText().toString().equals("登录")) {
+      if (strLogin.equals(mBtnLogin.getText().toString())) {
         mWanAndroidLoginPresenter.getLogin(mEditUserNameInput.getText().toString(),
             mEditPasswordInput.getText().toString());
       }
-      if (mBtnLogin.getText().toString().equals("注册")) {
+      if (strRegister.equals(mBtnLogin.getText().toString())) {
         if (!TextUtils.isEmpty(mEditPasswordConfirmInput.getText().toString())) {
           if (mEditPasswordInput.getText()
               .toString()
@@ -120,13 +124,12 @@ public class WanAndroidLoginActivity extends BaseActivity
   }
 
   @Override public void onRightClick(View v) {
-    if (mBtnLogin.getText().toString().equals("登录")) {
+    if (strLogin.equals(mBtnLogin.getText().toString())) {
       mTitleBarLogin.setRightTitle("登录");
       mBtnLogin.setText("注册");
       doAnimation(2);
 
-      Notification.show(this, 0
-          , "注册账号无需使用手机、邮箱等个人信息。"
+      Notification.show(this, 0, "注册账号无需使用手机、邮箱等个人信息。"
           , Notification.TYPE_ERROR).setDialogStyle(STYLE_KONGZUE);
     } else {
       mTitleBarLogin.setRightTitle("注册");
@@ -136,7 +139,8 @@ public class WanAndroidLoginActivity extends BaseActivity
   }
 
   @Override public void LoginSuccess(Data data) {
-
+    ToastUtil.toToast("登录成功");
+    finish();
   }
 
   @Override public void setRegister(String... info) {

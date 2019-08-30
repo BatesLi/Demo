@@ -106,7 +106,7 @@ public class WebTask implements NetTask<Data> {
         break;
       case StringUtils.TYPE_REGISTER:
         OkGo.<String>post(StringUtils.URL + StringUtils.USER_REGISTER)
-            .params("username", infos[0])
+            .params("username", infos[1])
             .params("password", infos[2])
             .params("repassword", infos[2])
             .execute(new StringCallback() {
