@@ -63,6 +63,8 @@ dependencies {
   implementation 'com.tencent.bugly:crashreport_upgrade:latest.release'
   //弹窗
   implementation 'com.kongzue.dialog:dialog:2.5.1'
+  //底部导航栏
+  implementation 'com.github.wenchaosong:BottomBar:3.0.7'
   //事件传递
   implementation 'org.greenrobot:eventbus:3.1.1'
   //解决单个dex文件的函数超过了65536个问题的api
@@ -72,6 +74,8 @@ dependencies {
   implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-24'
   implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-24'
   implementation 'com.github.zcweng:switch-button:0.0.3@aar'
+  //AutoLayout自动多屏幕的适配
+  implementation 'com.zhy:autolayout:1.4.3'
   //给应用集成打开office文档的功能
   implementation files(
           'libs/tbs_sdk_thirdapp_v4.3.0.1072_43646_sharewithdownloadwithfile_withoutGame_obfs_20190429_175122.jar')

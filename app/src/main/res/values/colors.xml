@@ -73,4 +73,6 @@
   <color name="btn_daily_mode">#FAFAFA</color>
   <color name="bg_card_view">#FFF</color>
   <color name="divide_line">#FFB7B2B2</color>
+  <!--UserPage-->
+  <color name="txt_user_id">#C0C0C0</color>
 </resources>
