@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#FFC0CB"
+    android:scrollbars="none">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/content_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8.0dip"
+            android:layout_marginRight="8.0dip"
+            android:layout_marginTop="50dp"
+            android:src="@mipmap/xbanner_logo"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linear_form"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28.0dip"
+            android:layout_marginRight="28.0dip"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/iv_logo">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                app:hintEnabled="false">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_account"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableLeft="@mipmap/tree"
+                    android:drawablePadding="8.0dip"
+                    android:drawableStart="@mipmap/tree_no"
+                    android:hint="请输入用户名"
+                    android:imeOptions="actionNext"
+                    android:inputType="textVisiblePassword"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/colorGray" />
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:id="@+id/input_layout_password"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                app:hintEnabled="false"
+                app:passwordToggleDrawable="@mipmap/confirm"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="#50ffffff">
+
+                <android.support.design.widget.TextInputEditText
+                    android:id="@+id/et_password"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:digits="@string/digits_password"
+                    android:drawableLeft="@mipmap/confirm"
+                    android:drawablePadding="8.0dip"
+                    android:drawableStart="@mipmap/confirm"
+                    android:hint="请输入秘密"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:lines="1"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:textColor="@color/white"
+                    android:textColorHint="@color/colorGray" />
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8.0dip"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_third_part_login_label">
+
+            <ImageButton
+                android:id="@+id/img_btn_phone_code_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:minHeight="50.0dip"
+                android:minWidth="50.0dip"
+                app:srcCompat="@mipmap/setting" />
+
+            <ImageButton
+                android:id="@+id/img_btn_wechat_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:minHeight="50.0dip"
+                android:minWidth="50.0dip"
+                app:srcCompat="@mipmap/id" />
+
+            <ImageButton
+                android:id="@+id/img_btn_trial_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:minHeight="50.0dip"
+                android:minWidth="50.0dip"
+                app:srcCompat="@mipmap/id" />
+
+            <android.support.v4.widget.Space
+                android:layout_width="20.0dip"
+                android:layout_height="fill_parent" />
+
+            <android.support.v4.widget.Space
+                android:layout_width="20.0dip"
+                android:layout_height="fill_parent" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_third_part_login_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0.0dip"
+            android:layout_marginRight="0.0dip"
+            android:layout_marginTop="16.0dip"
+            android:padding="8.0dip"
+            android:text="第三方登录"
+            android:textColor="@color/colorGray"
+            app:layout_constraintLeft_toLeftOf="@id/btn_to_register"
+            app:layout_constraintRight_toRightOf="@id/btn_to_register"
+            app:layout_constraintTop_toBottomOf="@id/btn_to_register" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="0.0dip"
+            android:layout_height="1.0dip"
+            android:layout_marginBottom="0.0dip"
+            android:layout_marginTop="0.0dip"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/txt_third_part_login_label"
+            app:layout_constraintLeft_toLeftOf="@id/btn_login"
+            app:layout_constraintRight_toLeftOf="@id/txt_third_part_login_label"
+            app:layout_constraintTop_toTopOf="@id/txt_third_part_login_label"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <View
+            android:layout_width="0.0dip"
+            android:layout_height="1.0dip"
+            android:layout_marginBottom="0.0dip"
+            android:layout_marginTop="0.0dip"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="@id/txt_third_part_login_label"
+            app:layout_constraintLeft_toRightOf="@id/txt_third_part_login_label"
+            app:layout_constraintRight_toRightOf="@id/btn_login"
+            app:layout_constraintTop_toTopOf="@id/txt_third_part_login_label"
+            app:layout_constraintVertical_bias="0.5" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_forget_password"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="8.0dip"
+            android:minHeight="0.0dip"
+            android:padding="8.0dip"
+            android:text="忘记秘密"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/white"
+            app:layout_constraintRight_toRightOf="@id/linear_form"
+            app:layout_constraintTop_toBottomOf="@id/linear_form" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@id/btn_login"
+            android:layout_width="0.0dip"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="0.0dip"
+            android:layout_marginRight="0.0dip"
+            android:layout_marginTop="8.0dip"
+            android:minHeight="0.0dip"
+            android:padding="8.0dip"
+            android:text="登录"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/white"
+            app:layout_constraintLeft_toLeftOf="@id/linear_form"
+            app:layout_constraintRight_toRightOf="@id/linear_form"
+            app:layout_constraintTop_toBottomOf="@id/btn_forget_password" />
+
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_to_register"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="8.0dip"
+            android:layout_marginRight="8.0dip"
+            android:layout_marginTop="8.0dip"
+            android:minHeight="0.0dip"
+            android:padding="8.0dip"
+            android:text="立即注册"
+            android:textColor="@color/white"
+            app:layout_constraintLeft_toLeftOf="@id/btn_login"
+            app:layout_constraintRight_toRightOf="@id/btn_login"
+            app:layout_constraintTop_toBottomOf="@id/btn_login" />
+
+        <android.support.v7.widget.AppCompatCheckBox
+            android:id="@+id/app_compat_check_remember_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="8.0dip"
+            android:button="@mipmap/collect"
+            android:checked="true"
+            android:padding="8.0dip"
+            android:text="记住秘密"
+            android:textAppearance="@style/TextAppearance.AppCompat.Small"
+            android:textColor="@color/white"
+            app:layout_constraintLeft_toLeftOf="@id/linear_form"
+            app:layout_constraintTop_toBottomOf="@id/linear_form" />
+    </android.support.constraint.ConstraintLayout>
+</ScrollView>

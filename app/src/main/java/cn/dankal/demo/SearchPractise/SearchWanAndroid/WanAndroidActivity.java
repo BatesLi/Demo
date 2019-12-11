@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -17,10 +16,13 @@ import cn.dankal.demo.R;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.Api.Contact;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.Api.WebTask;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.adapter.UserPageFragmentAdapter;
+import cn.dankal.demo.SearchPractise.SearchWanAndroid.animation.LaunchAnim;
+import cn.dankal.demo.SearchPractise.SearchWanAndroid.animation.TitleAnim;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.base.BaseActivity;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.custom.ClearEditText;
+import cn.dankal.demo.SearchPractise.SearchWanAndroid.fragment.BlankFragment;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.fragment.HomeFragment;
-import cn.dankal.demo.SearchPractise.SearchWanAndroid.fragment.SettingFragment;
+import cn.dankal.demo.SearchPractise.SearchWanAndroid.fragment.UserFragment;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.model.SearchResult;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.presenter.SearchPresenter;
 import cn.dankal.demo.SearchPractise.flowlayout.FlowLayout;
@@ -30,6 +32,7 @@ import com.bottom.NavigationController;
 import com.bottom.PageNavigationView;
 import com.bottom.item.BaseTabItem;
 import com.bottom.item.NormalItemView;
+import com.bottom.listener.OnTabItemSelectedListener;
 import com.gyf.immersionbar.ImmersionBar;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,9 +51,16 @@ public class WanAndroidActivity extends BaseActivity implements Contact.SearchVi
   @BindView(R.id.edit_wan_search) ClearEditText editWanSearch;
   @BindView(R.id.img_btn_wan_search) ImageButton imgBtnWanSearch;
   @BindView(R.id.flow_layout_wan_search) TagFlowLayout flowLayoutWanSearch;
-  public List<Fragment> mFragmentList;
   @BindView(R.id.view_page_wan_search) ViewPager mViewPagerWanSearch;
   @BindView(R.id.page_navigation_wan_search) PageNavigationView mPageNavigationWanSearch;
+
+    public List<Fragment> mFragmentList;
+    @BindView(R.id.linear_top_bar)
+    View mLinearTopBar;
+    @BindView(R.id.txt_top_title)
+    TextView mTxtTopTitle;
+    @BindView(R.id.img_btn_top_func)
+    ImageButton mImgBtnTopFunc;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -120,12 +130,18 @@ public class WanAndroidActivity extends BaseActivity implements Contact.SearchVi
   }
 
   public void initFragment() {
+
+      ImmersionBar.with(this).statusBarColor(R.color.bg_daily_mode).autoDarkModeEnable(true)
+              .fitsSystemWindows(true).keyboardEnable(true).init();
+      LaunchAnim.showLogo(mLinearTopBar, mViewPagerWanSearch, mPageNavigationWanSearch);
+
     mFragmentList = new ArrayList<>();
     mFragmentList.add(new HomeFragment());
-    mFragmentList.add(new HomeFragment());
-    mFragmentList.add(new HomeFragment());
-    mFragmentList.add(new SettingFragment());
+      mFragmentList.add(new BlankFragment());
+      mFragmentList.add(new BlankFragment());
+      mFragmentList.add(new UserFragment());
 
+      mViewPagerWanSearch.setOffscreenPageLimit(4);//缓存页面，不需要每次滑动fragment的时候都调用onCreate
     mViewPagerWanSearch.setAdapter(new UserPageFragmentAdapter(getSupportFragmentManager(),
         mFragmentList, this));
 
@@ -137,6 +153,34 @@ public class WanAndroidActivity extends BaseActivity implements Contact.SearchVi
         .build();
 
     navigationController.setupWithViewPager(mViewPagerWanSearch);
+      navigationController.addTabItemSelectedListener(new OnTabItemSelectedListener() {
+          @Override
+          public void onSelected(int index, int old) {
+              TitleAnim.hide(mTxtTopTitle);
+              switch (index) {
+                  case 0:
+                      TitleAnim.showAnimTitle(mTxtTopTitle, mImgBtnTopFunc, "首页", 0);
+
+                      break;
+                  case 1:
+                      TitleAnim.showAnimTitle(mTxtTopTitle, mImgBtnTopFunc, "导航", 1);
+                      break;
+                  case 2:
+                      TitleAnim.showAnimTitle(mTxtTopTitle, mImgBtnTopFunc, "项目", 2);
+                      break;
+                  case 3:
+                      TitleAnim.showAnimTitle(mTxtTopTitle, mImgBtnTopFunc, "我", 3);
+                      break;
+                  default:
+                      break;
+              }
+          }
+
+          @Override
+          public void onRepeat(int index) {
+
+          }
+      });
   }
 
   private BaseTabItem newItem(int drawableRes, int checkedDrawableRes, String text) {

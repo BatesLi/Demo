@@ -13,4 +13,27 @@
       <enum name="right" value="1"/>
     </attr>
   </declare-styleable>
+
+    <declare-styleable name="IndicateDotView">
+        <!--选中颜色-->
+        <attr name="indicate_select_color" format="color" />
+        <!--未选中颜色-->
+        <attr name="indicate_unselect_color" format="color" />
+        <!--指示器之间的距离-->
+        <attr name="indicate_margin" format="dimension" />
+        <!--圆点半径-->
+        <attr name="indicate_radius" format="dimension" />/
+        <!--圆点被选中个数 默认为1？-->
+        <attr name="indicate_number" format="integer" />
+        <!--圆点最大个数-->
+        <attr name="indicate_max_number" format="integer" />
+        <!--是否保留最少一个圆点-->
+        <attr name="indicate_is_least_one" format="boolean" />
+        <!--边框颜色-->
+        <attr name="indicate_divide_color" format="color" />
+        <!--边框宽度-->
+        <attr name="indicate_divide_width" format="dimension" />
+        <!--是否可点击-->
+        <attr name="android:clickable" />
+    </declare-styleable>
 </resources>

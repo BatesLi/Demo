@@ -2,40 +2,47 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="cn.dankal.demo">
 
-  <uses-permission android:name="android.permission.INTERNET" /> <!-- To auto-complete the email text field in the login form with the user's emails -->
-  <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-  <uses-permission android:name="android.permission.READ_PROFILE" />
-  <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <application
+        android:name=".SearchPractise.SearchWanAndroid.DemoAndroid"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".indicator.IndicatorActivity"></activity>
+        <activity android:name=".SearchPractise.MVP.GitHub.GitHubActivity" />
+        <activity android:name=".SearchPractise.MVP.Learn.TwoActivity" /> <!-- <activity android:name=".SearchPractise.MVP.Test.OneActivity" /> -->
+        <activity android:name=".SearchPractise.MVP.EasyLogin.EasyLoginActivity" />
+        <activity android:name=".SearchPractise.MVP.meUser.MeLoginActivity" />
+        <activity android:name=".SearchPractise.MVP.user.UserActivity" />
+        <activity android:name=".SearchPractise.MVP.MvpActivity" />
+        <activity android:name=".SearchPractise.SearchWanAndroid.WanAndroidLoginActivity" />
+        <activity android:name=".SearchPractise.SearchWanAndroid.WebActivity" />
+        <activity android:name=".SearchPractise.SearchWanAndroid.SearchResultActivity" />
+        <activity android:name=".SearchPractise.SearchWanAndroid.WanAndroidActivity" />
+        <activity
+            android:name=".SearchPractise.SearchRetrofit.SearchRetrofitActivity"
+            android:windowSoftInputMode="stateHidden|adjustNothing" />
+        <activity
+            android:name=".SQLite.SQLiteActivity"
+            android:windowSoftInputMode="stateHidden" />
+        <activity android:name=".SearchPractise.SearchTwo.SearchTwoActivity" />
+        <activity android:name=".SearchPractise.SearchOneActivity" />
+        <activity android:name=".user.LoginActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-  <application
-      android:name=".SearchPractise.SearchWanAndroid.DemoAndroid"
-      android:allowBackup="true"
-      android:icon="@mipmap/ic_launcher"
-      android:label="@string/app_name"
-      android:roundIcon="@mipmap/ic_launcher_round"
-      android:supportsRtl="true"
-      android:theme="@style/AppTheme">
-    <activity android:name=".SearchPractise.SearchWanAndroid.WanAndroidLoginActivity"></activity>
-    <activity android:name=".SearchPractise.SearchWanAndroid.WebActivity"></activity>
-    <activity android:name=".SearchPractise.SearchWanAndroid.SearchResultActivity"></activity>
-    <activity android:name=".SearchPractise.SearchWanAndroid.WanAndroidActivity"></activity>
-    <activity
-        android:name=".SearchPractise.SearchRetrofit.SearchRetrofitActivity"
-        android:windowSoftInputMode="stateHidden|adjustNothing"></activity>
-    <activity
-        android:name=".SQLite.SQLiteActivity"
-        android:windowSoftInputMode="stateHidden"></activity>
-    <activity android:name=".SearchPractise.SearchTwo.SearchTwoActivity"></activity>
-    <activity android:name=".SearchPractise.SearchOneActivity"></activity>
-    <activity android:name=".user.LoginActivity">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".HandlerActivity" />
+        <activity android:name=".BubbleSortActivity" />
+    </application> <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-    <activity android:name=".HandlerActivity"></activity>
-    <activity android:name=".BubbleSortActivity"></activity>
-  </application>
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

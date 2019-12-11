@@ -25,4 +25,8 @@ public class StringUtils {
 
   public static final String TYPE_LOGIN = "LOGIN";
   public static final String TYPE_REGISTER = "REGISTER";
+
+    //Home
+    public static final String HOME_BANNER = "banner/json";
+    public static final String HOME_TOP_ARTICLE = "article/top/json";
 }

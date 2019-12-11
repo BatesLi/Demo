@@ -1,82 +1,88 @@
 apply plugin: 'com.android.application'
 
 configurations.all {
-  resolutionStrategy.force 'com.android.support:support-v4:27.1.0'
+    resolutionStrategy.force 'com.android.support:support-v4:27.1.0'
 }
 
 android {
-  compileSdkVersion 27
-  defaultConfig {
-    applicationId "cn.dankal.demos"
-    minSdkVersion 16
-    targetSdkVersion 27
-    versionCode 1
-    versionName "1.0"
-    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-    multiDexEnabled true
-  }
-
-  buildTypes {
-    release {
-      minifyEnabled false
-      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    compileSdkVersion 27
+    defaultConfig {
+        applicationId "cn.dankal.demos"
+        minSdkVersion 16
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
     }
-  }
-  compileOptions {
-    sourceCompatibility JavaVersion.VERSION_1_8
-    targetCompatibility JavaVersion.VERSION_1_8
-  }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
-  implementation fileTree(include: ['*.jar'], dir: 'libs')
-  implementation 'com.android.support:support-annotations:27.1.1'
-  testImplementation 'junit:junit:4.12'
-  implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-  androidTestImplementation 'com.android.support.test:runner:1.0.2'
-  androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-  implementation 'com.android.support:cardview-v7:27.1.1'
-  implementation 'io.reactivex:rxandroid:1.2.1'
-  implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-  implementation 'com.squareup.retrofit2:retrofit:2.1.0'
-  implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
-  implementation 'com.github.bumptech.glide:glide:3.6.1'
-  api project(':basic-lib')
-  annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
-  api 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
-  //滑动返回
-  implementation 'cn.bingoogolapple:bga-swipebacklayout:1.2.0@aar'
-  //沉浸式顶栏框架
-  implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta02'
-  implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0-beta02'
-  //OkHttp,后期会用OKGo逐渐代替okhttp
-  implementation 'com.squareup.okhttp3:okhttp:3.11.0'
-  implementation 'com.lzy.net:okgo:3.0.4'
-  //帮助类
-  implementation 'com.blankj:utilcode:1.23.7'
-  //轮子哥titlebar框架
-  implementation 'com.hjq:titlebar:5.0'
-  //RecyclerViewAdapterHelper
-  implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
-  //X5内核
-  implementation 'com.just.agentwebX5:agentwebX5:2.0.0'
-  implementation 'com.tencent.bugly:crashreport_upgrade:latest.release'
-  //弹窗
-  implementation 'com.kongzue.dialog:dialog:2.5.1'
-  //底部导航栏
-  implementation 'com.github.wenchaosong:BottomBar:3.0.7'
-  //事件传递
-  implementation 'org.greenrobot:eventbus:3.1.1'
-  //解决单个dex文件的函数超过了65536个问题的api
-  implementation 'com.android.support:multidex:1.0.3'
-  //加载动画
-  implementation 'com.wang.avi:library:2.1.3'
-  implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-24'
-  implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-24'
-  implementation 'com.github.zcweng:switch-button:0.0.3@aar'
-  //AutoLayout自动多屏幕的适配
-  implementation 'com.zhy:autolayout:1.4.3'
-  //给应用集成打开office文档的功能
-  implementation files(
-          'libs/tbs_sdk_thirdapp_v4.3.0.1072_43646_sharewithdownloadwithfile_withoutGame_obfs_20190429_175122.jar')
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:support-annotations:27.1.1'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    implementation 'com.android.support:cardview-v7:27.1.1'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.1.0'
+    implementation 'com.github.bumptech.glide:glide:3.6.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    api project(':basic-lib')
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.4.0'
+    api 'com.trello.rxlifecycle2:rxlifecycle-components:2.1.0'
+    //滑动返回
+    implementation 'cn.bingoogolapple:bga-swipebacklayout:1.2.0@aar'
+    //沉浸式顶栏框架
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0-beta02'
+    implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0-beta02'
+    //OkHttp,后期会用OKGo逐渐代替okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'com.lzy.net:okgo:3.0.4'
+    //帮助类
+    implementation 'com.blankj:utilcode:1.23.7'
+    //轮子哥titlebar框架
+    implementation 'com.hjq:titlebar:5.0'
+    //RecyclerViewAdapterHelper
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.44'
+    //X5内核
+    implementation 'com.just.agentwebX5:agentwebX5:2.0.0'
+    implementation 'com.tencent.bugly:crashreport_upgrade:latest.release'
+    //弹窗
+    implementation 'com.kongzue.dialog:dialog:2.5.1'
+    //底部导航栏
+    implementation 'com.github.wenchaosong:BottomBar:3.0.7'
+    //事件传递
+    implementation 'org.greenrobot:eventbus:3.1.1'
+    //解决单个dex文件的函数超过了65536个问题的api
+    implementation 'com.android.support:multidex:1.0.3'
+    //加载动画
+    implementation 'com.wang.avi:library:2.1.3'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-24'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-24'
+    implementation 'com.github.zcweng:switch-button:0.0.3@aar'
+    //AutoLayout自动多屏幕的适配
+    implementation 'com.zhy:autolayout:1.4.3'
+    //首页轮播图片
+    implementation 'com.github.xiaohaibin:XBanner:1.7.0'
+    //Log信息日志框架
+    implementation 'com.orhanobut:logger:1.15'
+    //Android加载中动画AVLoadingIndicatorView
+    implementation 'com.wang.avi:library:2.1.3'
+    //给应用集成打开office文档的功能
+    implementation files(
+            'libs/tbs_sdk_thirdapp_v4.3.0.1072_43646_sharewithdownloadwithfile_withoutGame_obfs_20190429_175122.jar')
 }

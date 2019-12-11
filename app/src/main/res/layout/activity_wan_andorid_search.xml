@@ -4,7 +4,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:orientation="vertical">
 
-  <LinearLayout
+    <LinearLayout
       android:layout_width="match_parent" android:layout_height="wrap_content"
       android:orientation="horizontal" android:padding="8dp">
     <FrameLayout
@@ -27,7 +27,35 @@
         android:layout_weight="0.1" android:background="@android:color/transparent"/>
   </LinearLayout>
 
-  <TextView
+    <RelativeLayout
+        android:id="@+id/linear_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:visibility="gone">
+
+        <ImageButton
+            android:id="@+id/img_btn_top_func"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="25dp"
+            android:background="@color/transparent"
+            android:src="@mipmap/search"
+            android:visibility="visible" />
+
+        <TextView
+            android:id="@+id/txt_top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="首页"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+    <TextView
       android:layout_width="wrap_content" android:layout_height="wrap_content"
       android:layout_marginHorizontal="24dp" android:layout_marginTop="16dp"
       android:text="热门搜索" android:textColor="#393B4D"

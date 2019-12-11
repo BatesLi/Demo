@@ -1,6 +1,7 @@
 package cn.dankal.basic_lib.util;
 
 import android.content.Context;
+import android.os.Looper;
 import android.support.annotation.StringRes;
 import android.widget.Toast;
 
@@ -15,13 +16,21 @@ public class ToastUtil {
 
 
     public static void toToast(String str) {
-        if (str == null || str.isEmpty()) return;
-        if (toast == null) {
-            toast = Toast.makeText(mContext, str, Toast.LENGTH_SHORT);
-        } else {
-            toast.setText(str);
+        try {
+            if (str == null || str.isEmpty())
+                return;
+            if (toast == null) {
+                toast = Toast.makeText(mContext, str, Toast.LENGTH_SHORT);
+            } else {
+                toast.setText(str);
+            }
+            toast.show();
+        } catch (Exception e) {
+            Looper.prepare();
+            Toast.makeText(mContext, str, Toast.LENGTH_LONG).show();
+            Looper.loop();
         }
-        toast.show();
+
     }
 
     public static void toToast(@StringRes int Rid) {

@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".user.LoginActivity">
 
-    <RelativeLayout
+    <!--<RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/y98">
 
@@ -20,7 +20,7 @@
             android:layout_marginTop="@dimen/y40" />
 
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
     <View
         android:layout_width="match_parent"
@@ -154,4 +154,66 @@
   <Button android:id="@+id/btn_wan_android_search"
       android:layout_width="wrap_content" android:layout_height="wrap_content"
       android:layout_marginLeft="10dp" android:text="WanAndroidSearch"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_mvp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="MVP" />
+
+        <Button
+            android:id="@+id/btn_user"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/btn_mvp"
+            android:text="User" />
+
+        <Button
+            android:id="@+id/btn_me_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/btn_user"
+            android:text="MeLogin" />
+
+        <Button
+            android:id="@+id/btn_bubbles"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/btn_me_login"
+            android:text="Bubbles" />
+
+        <Button
+            android:id="@+id/btn_easy_login"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_me_login"
+            android:layout_marginLeft="10dp"
+            android:text="EasyLogin" />
+
+        <Button
+            android:id="@+id/btn_github"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_me_login"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/btn_easy_login"
+            android:text="GitHub" />
+
+        <Button
+            android:id="@+id/btn_view_page_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btn_mvp"
+            android:layout_toRightOf="@id/btn_github"
+            android:text="ViewPageIndicator" />
+    </RelativeLayout>
+
 </LinearLayout>

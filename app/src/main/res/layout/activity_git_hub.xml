@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="cn.dankal.demo.SearchPractise.MVP.GitHub.GitHubActivity">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_git_hub"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_git_hub_user" />
+
+    <cn.dankal.demo.SearchPractise.MVP.GitHub.ui.IndicateDotView
+        android:id="@+id/indicate_view_circle"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        app:indicate_margin="5dp"
+        app:indicate_max_number="6"
+        app:indicate_number="1"
+        app:indicate_radius="10dp"
+        app:indicate_select_color="@color/gray"
+        app:indicate_unselect_color="@color/black" />
+
+    <com.wang.avi.AVLoadingIndicatorView
+        android:id="@+id/avl_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        app:indicatorColor="@color/colorTextBlack"
+        app:indicatorName="LineSpinFadeLoaderIndicator" />
+
+    <include layout="@layout/git_hub_dots" />
+</LinearLayout>

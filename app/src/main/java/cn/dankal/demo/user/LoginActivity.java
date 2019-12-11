@@ -7,16 +7,25 @@ import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
+import cn.dankal.basic_lib.util.ToastUtil;
+import cn.dankal.demo.BubbleSortActivity;
 import cn.dankal.demo.R;
 import cn.dankal.demo.SQLite.SQLiteActivity;
+import cn.dankal.demo.SearchPractise.MVP.EasyLogin.EasyLoginActivity;
+import cn.dankal.demo.SearchPractise.MVP.GitHub.GitHubActivity;
+import cn.dankal.demo.SearchPractise.MVP.MvpActivity;
+import cn.dankal.demo.SearchPractise.MVP.meUser.MeLoginActivity;
+import cn.dankal.demo.SearchPractise.MVP.user.UserActivity;
 import cn.dankal.demo.SearchPractise.SearchOneActivity;
 import cn.dankal.demo.SearchPractise.SearchRetrofit.SearchRetrofitActivity;
 import cn.dankal.demo.SearchPractise.SearchTwo.SearchTwoActivity;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.WanAndroidActivity;
+import cn.dankal.demo.indicator.IndicatorActivity;
 
 /**
  * @author leaflc
@@ -33,10 +42,27 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     Button btVerifyCode;
     @BindView(R.id.bt_login)
     Button btLogin;
+    @BindView(R.id.btn_mvp)
+    Button mBtnMvp;
+    @BindView(R.id.btn_user)
+    Button mBtnUser;
+    @BindView(R.id.btn_me_login)
+    Button mBtnMeLogin;
+    @BindView(R.id.btn_easy_login)
+    Button mBtnEasyLogin;
+    @BindView(R.id.btn_github)
+    Button mBtnGithub;
+    @BindView(R.id.btn_bubbles)
+    Button mBtnBubbles;
+    @BindView(R.id.btn_view_page_indicator)
+    Button mBtnViewPageIndicator;
 
-  @BindView(R.id.btn_record_two) Button mBtnRecordTwo;
-  @BindView(R.id.btn_search_retrofit) Button mBtnSearchRetrofit;
-  @BindView(R.id.btn_wan_android_search) Button mBtnWanAndroidSearch;
+    @BindView(R.id.btn_record_two)
+    Button mBtnRecordTwo;
+    @BindView(R.id.btn_search_retrofit)
+    Button mBtnSearchRetrofit;
+    @BindView(R.id.btn_wan_android_search)
+    Button mBtnWanAndroidSearch;
 
     private LoginPresenter presenter = new LoginPresenter();
     private TimeCount timeCount;
@@ -95,7 +121,9 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     }
 
   @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_record_two
-      , R.id.btn_sqlite, R.id.btn_search_retrofit, R.id.btn_wan_android_search})
+          , R.id.btn_sqlite, R.id.btn_search_retrofit, R.id.btn_wan_android_search, R.id.btn_mvp
+          , R.id.btn_user, R.id.btn_me_login, R.id.btn_easy_login, R.id.btn_github, R.id.btn_bubbles
+          , R.id.btn_view_page_indicator})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_verify_code:
@@ -128,6 +156,34 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
                 new Intent(LoginActivity.this, WanAndroidActivity.class);
             startActivity(intentWanAndroidSearch);
             break;
+            case R.id.btn_mvp:
+                Intent mvpIntent = new Intent(LoginActivity.this, MvpActivity.class);
+                startActivity(mvpIntent);
+                break;
+            case R.id.btn_user:
+                Intent userIntent = new Intent(LoginActivity.this, UserActivity.class);
+                startActivity(userIntent);
+                break;
+            case R.id.btn_me_login:
+                Intent meLoginIntent = new Intent(LoginActivity.this, MeLoginActivity.class);
+                startActivity(meLoginIntent);
+                break;
+            case R.id.btn_easy_login:
+                Intent EasyLoginIntent = new Intent(LoginActivity.this, EasyLoginActivity.class);
+                startActivity(EasyLoginIntent);
+                break;
+            case R.id.btn_github:
+                Intent gitHubLoginIntent = new Intent(LoginActivity.this, GitHubActivity.class);
+                startActivity(gitHubLoginIntent);
+                break;
+            case R.id.btn_bubbles:
+                Intent bubblesIntent = new Intent(LoginActivity.this, BubbleSortActivity.class);
+                startActivity(bubblesIntent);
+                break;
+            case R.id.btn_view_page_indicator:
+                Intent indicatorIntent = new Intent(LoginActivity.this, IndicatorActivity.class);
+                startActivity(indicatorIntent);
+                break;
             default:
                 break;
         }

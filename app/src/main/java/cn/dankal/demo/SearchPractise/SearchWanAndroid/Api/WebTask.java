@@ -5,10 +5,10 @@ import cn.dankal.demo.SearchPractise.SearchWanAndroid.model.Data;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.model.SearchResult;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.model.WanAndroid;
 import cn.dankal.demo.SearchPractise.SearchWanAndroid.model.WanAndroid_Content;
-import com.google.gson.Gson;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+import com.google.gson.Gson;
 
 public class WebTask implements NetTask<Data> {
 

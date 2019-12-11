@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.Toast;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.dankal.demo.R;
@@ -26,7 +27,7 @@ import com.tencent.smtt.sdk.WebView;
 
 public class WebActivity extends BaseActivity implements WebContact.WebView {
 
-  public WebPresenter webPresenter;
+    public WebContact.WebPresenter webPresenter;
   @BindView(R.id.title_bar_web) TitleBar titleBarWeb;
   @BindView(R.id.progress_web) ProgressWebView progressWeb;
 
@@ -78,7 +79,7 @@ public class WebActivity extends BaseActivity implements WebContact.WebView {
   }
 
   @Override public void setPresenter(WebContact.WebPresenter presenter) {
-
+      this.webPresenter = presenter;
   }
 
   @Override
