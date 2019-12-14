@@ -10,6 +10,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
+import cn.dankal.demo.CircleDotIndicator.CircleDotIndicatorActivity;
 import cn.dankal.demo.R;
 import cn.dankal.demo.indicator.IndicatorViewPageActivity;
 
@@ -30,12 +31,14 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     Button btLogin;
     @BindView(R.id.btn_indicator)
     Button mBtnIndicator;
+    @BindView(R.id.btn_circle_dot_indicator)
+    Button mBtnCircleDotIndicator;
 
     private LoginPresenter presenter = new LoginPresenter();
     private TimeCount timeCount;
     private String tempCode;
 
-    @OnTextChanged({R.id.et_mobile, R.id.et_verify_code})
+    @OnTextChanged({R.id.et_mobile, R.id.et_verify_code, R.id.btn_circle_dot_indicator})
     void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
         if (!etMobile.getText().toString().isEmpty() && !etVerifyCode.getText().toString().isEmpty()) {
             btLogin.setBackgroundColor(ContextCompat.getColor(this, R.color.colorSub));
@@ -87,7 +90,8 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
         timeCount.cancel();
     }
 
-    @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_indicator})
+    @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_indicator
+            , R.id.btn_circle_dot_indicator})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_verify_code:
@@ -103,6 +107,10 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
             case R.id.btn_indicator:
                 Intent indicatorIntent = new Intent(this, IndicatorViewPageActivity.class);
                 startActivity(indicatorIntent);
+                break;
+            case R.id.btn_circle_dot_indicator:
+                Intent circleDotIndicatorIntent = new Intent(this, CircleDotIndicatorActivity.class);
+                startActivity(circleDotIndicatorIntent);
                 break;
             default:
                 break;
