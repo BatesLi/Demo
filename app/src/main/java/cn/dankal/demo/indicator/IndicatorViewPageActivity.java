@@ -60,7 +60,6 @@ public class IndicatorViewPageActivity extends AppCompatActivity implements View
 
         mButtons = new Button[]{mBtnOne, mBtnTwo, mBtnThree, mBtnFour, mBtnFive};
         mImgCursor.setBackgroundColor(Color.RED);
-
         initViewPage();
         initBtnColor();
     }
@@ -115,12 +114,11 @@ public class IndicatorViewPageActivity extends AppCompatActivity implements View
     public void cursorAnim(int curItem) {
         mCursorX = 0;
         //总体:指示器的宽度 == 文字的宽度
-        //指示器总宽度:把每一个按钮的宽度是为 一个数组的元素，放入数组中。
-       /* LinearLayout.LayoutParams params = (LinearLayout.LayoutParams)mImgCursor.getLayoutParams();
+        //指示器总宽度:把每一个按钮的宽度是为 一个数组的元素，放入数组中 ; 每个view所能获得的layoutparams都是他所对应的父view
+        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) mImgCursor.getLayoutParams();
         //获取每一个按钮的文字的宽度
-        params.weight = mWidrhArgs[curItem] - mButtons[0].getPaddingLeft() * 2;
-        mImgCursor.setLayoutParams(params);*/
-
+        params.width = mWidrhArgs[curItem] - mButtons[0].getPaddingLeft() * 2;
+        mImgCursor.setLayoutParams(params);
         //循环取出buttons数组的宽度
         for (int i = 0; i < curItem; i++) {
             mCursorX = mCursorX + mButtons[i].getWidth();
