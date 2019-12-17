@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AutoBanner.AutoBannerActivity"></activity>
+        <activity android:name=".autoBanner.AutoBannerActivity"></activity>
         <activity android:name=".CircleDotIndicator.CircleDotIndicatorActivity" />
         <activity android:name=".indicator.IndicatorViewPageActivity" />
         <activity android:name=".user.LoginActivity">

@@ -10,7 +10,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
-import cn.dankal.demo.AutoBanner.AutoBannerActivity;
+import cn.dankal.demo.autoBanner.AutoBannerActivity;
 import cn.dankal.demo.CircleDotIndicator.CircleDotIndicatorActivity;
 import cn.dankal.demo.R;
 import cn.dankal.demo.indicator.IndicatorViewPageActivity;
