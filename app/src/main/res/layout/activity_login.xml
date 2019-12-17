@@ -157,5 +157,13 @@
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@id/btn_indicator"
             android:text="CircleDot" />
+
+        <Button
+            android:id="@+id/btn_auto_banner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/btn_circle_dot_indicator"
+            android:text="AutoBanner" />
     </RelativeLayout>
 </LinearLayout>

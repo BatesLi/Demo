@@ -10,6 +10,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
+import cn.dankal.demo.AutoBanner.AutoBannerActivity;
 import cn.dankal.demo.CircleDotIndicator.CircleDotIndicatorActivity;
 import cn.dankal.demo.R;
 import cn.dankal.demo.indicator.IndicatorViewPageActivity;
@@ -33,6 +34,8 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     Button mBtnIndicator;
     @BindView(R.id.btn_circle_dot_indicator)
     Button mBtnCircleDotIndicator;
+    @BindView(R.id.btn_auto_banner)
+    Button mBtnAutoBanner;
 
     private LoginPresenter presenter = new LoginPresenter();
     private TimeCount timeCount;
@@ -91,7 +94,7 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     }
 
     @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_indicator
-            , R.id.btn_circle_dot_indicator})
+            , R.id.btn_circle_dot_indicator, R.id.btn_auto_banner})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_verify_code:
@@ -111,6 +114,10 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
             case R.id.btn_circle_dot_indicator:
                 Intent circleDotIndicatorIntent = new Intent(this, CircleDotIndicatorActivity.class);
                 startActivity(circleDotIndicatorIntent);
+                break;
+            case R.id.btn_auto_banner:
+                Intent autoBannerIntent = new Intent(this, AutoBannerActivity.class);
+                startActivity(autoBannerIntent);
                 break;
             default:
                 break;
