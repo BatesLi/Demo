@@ -4,15 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".autoBanner.AutoBannerActivity">
 
-    <com.yc.cn.ycbannerlib.banner.BannerView
-        android:id="@+id/Banner_view"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        app:hint_color="@color/black"
-        app:hint_gravity="center"
-        app:hint_mode="point"
-        app:play_delay="2000" />
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/linear_dot"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="5dp"
+            android:layout_weight="2"
+            android:gravity="center|right"
+            android:orientation="horizontal"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_page_auto_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </LinearLayout>

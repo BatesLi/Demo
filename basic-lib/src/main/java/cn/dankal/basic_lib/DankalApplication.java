@@ -20,7 +20,6 @@ public class DankalApplication extends Application {
 
     public static final boolean IS_DEBUG_MODE = true;
 
-
     @Override
     public void onCreate() {
         super.onCreate();
