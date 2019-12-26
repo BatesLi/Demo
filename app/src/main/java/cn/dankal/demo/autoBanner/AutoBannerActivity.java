@@ -32,8 +32,7 @@ public class AutoBannerActivity extends AppCompatActivity {
     ViewPager mViewPageAutoBanner;
     @BindView(R.id.linear_dot)
     LinearLayout mLinearDot;
-    @BindView(R.id.linear_container)
-    LinearLayout mLinearContainer;
+
     //图片数组
     int[] photos = {R.mipmap.item1, R.mipmap.item2, R.mipmap.item3, R.mipmap.item4, R.mipmap.item5,
             R.mipmap.item6};
@@ -64,17 +63,13 @@ public class AutoBannerActivity extends AppCompatActivity {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
-
             @Override
             public void onPageSelected(int position) {
-                ToastUtil.toToast("图片的位置： " + position);
-
                 int newPosition = position % mPhotoList.size();
                 mDots.get(previousPosition).setBackgroundResource(R.drawable.ic_dot_focused);
                 mDots.get(newPosition).setBackgroundResource(R.drawable.ic_dot_normal);
                 previousPosition = newPosition;
             }
-
             @Override
             public void onPageScrollStateChanged(int state) {
 
@@ -83,7 +78,6 @@ public class AutoBannerActivity extends AppCompatActivity {
         mDots = addDots(mLinearDot, ContextCompat.getDrawable(this, R.drawable.ic_dot_focused), mPhotoList.size());
         mDots.get(0).setBackgroundResource(R.drawable.ic_dot_normal);
     }
-
     //动态添加一个点 【确定步骤。每一个思路要用到哪些语句、方法和对象。】
     public int addDot(LinearLayout linearLayout, Drawable background) {
         View viewDot = new View(this);
@@ -99,7 +93,6 @@ public class AutoBannerActivity extends AppCompatActivity {
         linearLayout.addView(viewDot);
         return viewDot.getId();
     }
-
     //添加多个轮播小点到LinearLayout
     public List<View> addDots(LinearLayout linearLayout, Drawable background, int number) {
         List<View> dots = new ArrayList<>();
@@ -110,5 +103,3 @@ public class AutoBannerActivity extends AppCompatActivity {
         return dots;
     }
 }
-
-
