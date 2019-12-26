@@ -21,7 +21,7 @@ public class AutoBannerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return mImageViews.size();
+        return Integer.MAX_VALUE;
     }
 
     @Override
@@ -30,13 +30,18 @@ public class AutoBannerAdapter extends PagerAdapter {
     }
 
     @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
+
+    @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        container.addView(mImageViews.get(position));
-        return mImageViews.get(position);
+        container.addView(mImageViews.get(position % mImageViews.size()));
+        return mImageViews.get(position % mImageViews.size());
     }
 
     @Override
     public void destroyItem(View container, int position, Object object) {
-        mViewPager.removeView(mImageViews.get(position));
+        mViewPager.removeView(mImageViews.get(position % mImageViews.size()));
     }
 }
