@@ -1,11 +1,16 @@
 package cn.dankal.demo.autoBanner;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -17,7 +22,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import cn.dankal.basic_lib.util.ToastUtil;
 import cn.dankal.demo.R;
 import cn.dankal.demo.autoBanner.adapter.AutoBannerAdapter;
 
@@ -32,12 +36,16 @@ public class AutoBannerActivity extends AppCompatActivity {
     ViewPager mViewPageAutoBanner;
     @BindView(R.id.linear_dot)
     LinearLayout mLinearDot;
+    @BindView(R.id.txt_banner_result)
+    TextView mTxtBannerResult;
 
     //图片数组
     int[] photos = {R.mipmap.item1, R.mipmap.item2, R.mipmap.item3, R.mipmap.item4, R.mipmap.item5,
             R.mipmap.item6};
     //前一个被选中的position
+    private AutoBannerThead mAutoBannerThead;
     private int previousPosition = 0;
+    private boolean isExit = true;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +53,11 @@ public class AutoBannerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_auto_banner);
         ButterKnife.bind(this);
         initViewPagerData();
+
+        isExit = false;
+        mAutoBannerThead = null;
+        mAutoBannerThead = new AutoBannerThead();
+        mAutoBannerThead.start();
     }
 
     public void initViewPagerData() {
@@ -63,6 +76,7 @@ public class AutoBannerActivity extends AppCompatActivity {
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
             }
+
             @Override
             public void onPageSelected(int position) {
                 int newPosition = position % mPhotoList.size();
@@ -70,6 +84,7 @@ public class AutoBannerActivity extends AppCompatActivity {
                 mDots.get(newPosition).setBackgroundResource(R.drawable.ic_dot_normal);
                 previousPosition = newPosition;
             }
+
             @Override
             public void onPageScrollStateChanged(int state) {
 
@@ -78,6 +93,7 @@ public class AutoBannerActivity extends AppCompatActivity {
         mDots = addDots(mLinearDot, ContextCompat.getDrawable(this, R.drawable.ic_dot_focused), mPhotoList.size());
         mDots.get(0).setBackgroundResource(R.drawable.ic_dot_normal);
     }
+
     //动态添加一个点 【确定步骤。每一个思路要用到哪些语句、方法和对象。】
     public int addDot(LinearLayout linearLayout, Drawable background) {
         View viewDot = new View(this);
@@ -102,4 +118,24 @@ public class AutoBannerActivity extends AppCompatActivity {
         }
         return dots;
     }
+
+    class AutoBannerThead extends Thread {
+        @Override
+        public void run() {
+            while (!isExit) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        mViewPageAutoBanner.setCurrentItem(mViewPageAutoBanner.getCurrentItem() + 1);
+                    }
+                });
+            }
+        }
+    }
+
 }
