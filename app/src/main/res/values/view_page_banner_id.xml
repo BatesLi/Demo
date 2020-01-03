@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="banner_dot_id" type="id" />
+    <item name="view_page_banner" type="id" />
 </resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TextView">
+        <attr name="lctyText" format="string"></attr>
+        <attr name="lctyColor" format="color"></attr>
+        <attr name="lctySize" format="dimension"></attr>
+    </declare-styleable>
+</resources>
