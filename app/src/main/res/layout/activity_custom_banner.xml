@@ -9,6 +9,5 @@
 
     <cn.dankal.demo.customBanner.view.CustomBannerView android:id="@+id/custom_banner_view"
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        xmlns:app="http://schemas.android.com/apk/res-auto" />
+        android:layout_height="250dp" />
 </LinearLayout>

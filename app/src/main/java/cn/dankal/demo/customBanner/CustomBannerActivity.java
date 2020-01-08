@@ -1,24 +1,26 @@
 package cn.dankal.demo.customBanner;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.ImageView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import cn.dankal.demo.R;
-import cn.dankal.demo.customBanner.adapter.AbsLoopViewPageAdapter;
+import cn.dankal.demo.customBanner.adapter.ImageNormalAdapter;
 import cn.dankal.demo.customBanner.view.CustomBannerView;
 
 public class CustomBannerActivity extends AppCompatActivity {
 
+    @Nullable
     @BindView(R.id.custom_banner_view)
     CustomBannerView mCustomBannerView;
+    private ImageNormalAdapter mNormalAdapter;
 
-    int[] photos = {R.mipmap.item1, R.mipmap.item2, R.mipmap.item3, R.mipmap.item4, R.mipmap.item5,
-            R.mipmap.item6};
+    List<ImageView> mImageViewList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,23 +32,5 @@ public class CustomBannerActivity extends AppCompatActivity {
 
     public void initBanner() {
         //设置adapter
-        mCustomBannerView.setAdapter(new ImageNormalAdapter(mCustomBannerView));
-    }
-
-    private class ImageNormalAdapter extends AbsLoopViewPageAdapter {
-
-        public ImageNormalAdapter(CustomBannerView customBannerView) {
-            super(customBannerView);
-        }
-
-        @Override
-        public int getRealCound() {
-            return photos.length;
-        }
-
-        @Override
-        public View getView(ViewGroup container, int position) {
-            return null;
-        }
     }
 }

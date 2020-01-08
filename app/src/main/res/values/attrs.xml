@@ -5,4 +5,7 @@
         <attr name="lctyColor" format="color"></attr>
         <attr name="lctySize" format="dimension"></attr>
     </declare-styleable>
+    <declare-styleable name="CustomBannerView">
+        <attr name="backgoundColor" format="color|reference" />
+    </declare-styleable>
 </resources>

@@ -15,7 +15,7 @@
         <activity android:name=".autoBanner.AutoBannerActivity" />
         <activity android:name=".CircleDotIndicator.CircleDotIndicatorActivity" />
         <activity android:name=".indicator.IndicatorViewPageActivity" />
-        <activity android:name=".CustomText.CustomTextActivity">
+        <activity android:name=".user.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
