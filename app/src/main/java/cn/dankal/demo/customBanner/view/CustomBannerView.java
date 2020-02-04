@@ -2,14 +2,13 @@ package cn.dankal.demo.customBanner.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ScrollView;
 import android.widget.Scroller;
 
 import cn.dankal.basic_lib.util.ToastUtil;
@@ -36,7 +35,7 @@ public class CustomBannerView extends ViewGroup {
     }
 
     public CustomBannerView(Context context, AttributeSet attrs) {
-        super(context);
+        super(context, attrs);
         this.mContext = context;
         initChildView();
     }
@@ -66,6 +65,15 @@ public class CustomBannerView extends ViewGroup {
     }
 
     @Override
+    public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        int childCount = getChildCount();
+        Log.e("TAG", "childNumber:  " + childCount);
+        for (int i = 0; i < childCount; i++) {
+            getChildAt(i).measure(widthMeasureSpec, heightMeasureSpec);
+        }
+    }
+    @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
         int childcound = getChildCount();
         for (int i = 0; i < childcound; i++) {
@@ -79,13 +87,14 @@ public class CustomBannerView extends ViewGroup {
         mGestureDetector.onTouchEvent(event);
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                ToastUtil.toToast("移动");
+                ToastUtil.toToast("");
                 break;
             case MotionEvent.ACTION_MOVE:
+                //相对于初始位置滑动的距离
                 scrollX = getScrollX();
                 /*
                  * 你滑动的距离加上屏幕的一半，除以屏幕宽度，
-                 * 就是当前图片显示的pos.如果你滑动距离超过了屏幕的一半，这个pos就加1
+                 * 就是当前图片显示的position.如果你滑动距离超过了屏幕的一半，这个position就加1
                  * */
                 position = (getScrollX() + getWidth() / 2) / getWidth();
                 //当你滑动到最后一张的时候，不能超出边界。
@@ -95,9 +104,17 @@ public class CustomBannerView extends ViewGroup {
                 if (position < 0) {
                     position = 0;
                 }
+                if (mOnCustomBannerListener != null) {
+                    Log.e("TAG", "offset=" + (float) (getScrollX() * 1.0 / ((1) * getWidth())));
+                    mOnCustomBannerListener.OnPageScrollListener((float) (getScaleX() * 1.0 / ((1) * getWidth())), position);
+                }
                 break;
+            //MotionEvent.ACTION_UP——最后一根手指离开屏幕的效果？当最后一根手指离开view，就开始进行滚动
             case MotionEvent.ACTION_UP:
-                scrollTo(position * getWidth(), 0);
+                //scrollX——从初始化位置开始的相对滑动距离——既是开始滚动的start \ 偏移量的概念是什么？
+                mScroller.startScroll(scrollX, 0, -(scrollX - position * getWidth()), 0);
+                //Invalidate方法实现界面刷新,在ui线程中使用
+                invalidate();
                 break;
             default:
                 break;
@@ -106,7 +123,35 @@ public class CustomBannerView extends ViewGroup {
     }
 
     @Override
+    public void computeScroll() {
+        if (mScroller.computeScrollOffset()) {
+            scrollTo(mScroller.getCurrX(), 0);
+            postInvalidate();
+            if (mOnCustomBannerListener != null) {
+                Log.e("TAG", "offset=" + (float) (getScrollX() * 1.0 / (getWidth())));
+                mOnCustomBannerListener.OnPageScrollListener((float) (getScaleX() * 1.0 / (getWidth())), position);
+            }
+        }
+    }
+    @Override
     public void onDraw(Canvas canvas) {
         super.onDraw(canvas);
+    }
+    /*
+     position 当前所在页面
+        positionOffset 当前所在页面偏移百分比
+        positionOffsetPixels 当前所在页面偏移量
+    * */
+
+    public interface OnCustomBannerListener {
+        void OnPageScrollListener(float positionOffset, int positionOffsetPixels);
+
+        void OnPageScrollListener(int position);
+    }
+
+    public OnCustomBannerListener mOnCustomBannerListener;
+
+    public void setOnCustomBannerListener(OnCustomBannerListener onCustomBannerListener) {
+        this.mOnCustomBannerListener = onCustomBannerListener;
     }
 }

@@ -8,6 +8,7 @@
     android:orientation="vertical">
 
     <cn.dankal.demo.CustomText.TextView
+        android:id="@+id/txt_custom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:lctyText="你很好看"
