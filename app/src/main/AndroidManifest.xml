@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!-- <activity android:name=".Test.CustomTextActivity"></activity>-->
+        <activity android:name=".arcProgressBarView.ArcProgressBarViewActivity"></activity>
+        <!-- <activity android:name=".Test.CustomTextActivity"></activity> -->
         <activity android:name=".customBanner.CustomBannerActivity" />
         <activity android:name=".autoBanner.AutoBannerActivity" />
         <activity android:name=".CircleDotIndicator.CircleDotIndicatorActivity" />
@@ -23,10 +24,10 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
 </manifest>

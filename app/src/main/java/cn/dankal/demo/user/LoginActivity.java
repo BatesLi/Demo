@@ -1,19 +1,23 @@
 package cn.dankal.demo.user;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
 import cn.dankal.basic_lib.base.BaseActivity;
-import cn.dankal.demo.customBanner.CustomBannerActivity;
-import cn.dankal.demo.autoBanner.AutoBannerActivity;
 import cn.dankal.demo.CircleDotIndicator.CircleDotIndicatorActivity;
 import cn.dankal.demo.R;
+import cn.dankal.demo.arcProgressBarView.ArcProgressBarViewActivity;
+import cn.dankal.demo.autoBanner.AutoBannerActivity;
+import cn.dankal.demo.customBanner.CustomBannerActivity;
 import cn.dankal.demo.indicator.IndicatorViewPageActivity;
 
 /**
@@ -39,6 +43,8 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     Button mBtnAutoBanner;
     @BindView(R.id.btn_custom_banner)
     Button mBtnCustomBanner;
+    @BindView(R.id.btn_arc_progress)
+    Button mBtnArcProgress;
 
     private LoginPresenter presenter = new LoginPresenter();
     private TimeCount timeCount;
@@ -97,14 +103,14 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
     }
 
     @OnClick({R.id.bt_verify_code, R.id.bt_login, R.id.btn_indicator
-            , R.id.btn_circle_dot_indicator, R.id.btn_auto_banner, R.id.btn_custom_banner})
+            , R.id.btn_circle_dot_indicator, R.id.btn_auto_banner, R.id.btn_custom_banner, R.id.btn_arc_progress})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.bt_verify_code:
                 presenter.getVerifyCode(etMobile.getText().toString());
                 break;
             case R.id.bt_login:
-                if (tempCode==null){
+                if (tempCode == null) {
                     showToast("请先获取验证码");
                     return;
                 }
@@ -126,9 +132,19 @@ public class LoginActivity extends BaseActivity implements LoginContact.LoginVie
                 Intent customBannerIntent = new Intent(this, CustomBannerActivity.class);
                 startActivity(customBannerIntent);
                 break;
+            case R.id.btn_arc_progress:
+                Intent arcProgressIntent = new Intent(this, ArcProgressBarViewActivity.class);
+                startActivity(arcProgressIntent);
+                break;
             default:
                 break;
         }
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ButterKnife.bind(this);
     }
 
 
